@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="voucher-container">
+    <h3>Voucher for Transaction/Debtor</h3>
+    
+    {% if transaction %}
+        <img src="{{ transaction.tran_voucher.url }}" alt="Transaction Voucher" style="max-width: 50%; height:auto;">
+    {% elif debtor %}
+        <img src="{{ debtor.debt_voucher.url }}" alt="Debtor Voucher" style="max-width: 100%; height:auto;">
+    {% else %}
+        <p>No voucher available for this record.</p>
+    {% endif %}
+</div>
+{% endblock %}

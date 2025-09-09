@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+  Dashboard
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div class="container-debtor-stat">
+      <div class="title-block">
+        <div class="title-text text-start">Dashboard</div>
+      </div>
+      <hr color="grey" />
+
+      <!-- First block -->
+      <div class="debtor-stats-count">
+        <div class="row">
+          <div class="col">
+            <div class="total-debtor-block bg-primary">
+              <div class="icon text-start">
+                <i class="fa-solid fa-people-group text-white"></i>
+              </div>
+              <div class="total-debtor-text text-white text-start">Total Debtor</div>
+              <div class="debtor-counts text-white text-start">{{ total_debtors_no|default:0 }}</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="active-debtor-block bg-success">
+              <div class="icon text-start">
+                <i class="fa-solid fa-person text-white text-start"></i>
+              </div>
+              <div class="active-debtor-text text-white text-start">Active Debtors</div>
+              <div class="active-counts text-white text-start">{{ active_debtors_no|default:0 }}</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="recovered-debtor-block bg-secondary">
+              <div class="icon text-start">
+                <i class="fa-solid fa-person-arrow-up-from-line text-white"></i>
+              </div>
+              <div class="recovered-debtor-text text-white text-start">Recovered Debtor</div>
+              <div class="recovered-counts text-white text-start">{{ recovered_debtors_no|default:0 }}</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="recovery-rate-block deleted-debtors bg-danger">
+              <div class="icon text-start">
+                <i class="fa-solid fa-user-minus text-white"></i>
+              </div>
+              <div class="recovery-debtor-text text-white text-start">Deleted Debtor</div>
+              <div class="recovery-rate text-white text-start">{{ deleted_debtors_no }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second block -->
+      <div class="debtor-stats-amount">
+        <div class="row">
+          <div class="col">
+            <div class="total-debtor-block total-debts bg-primary">
+              <div class="icon text-start">
+                <i class="fa-solid fa-money-bill-1 text-white"></i>
+              </div>
+              <div class="total-debtor-text text-white text-start">Total Debt</div>
+              <div class="debtor-counts text-white text-start">{{ total_debt_amount|floatformat:2|intcomma }}</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="active-debtor-block recovered-debts bg-success">
+              <div class="icon text-start">
+                <i class="fa-solid fa-money-bill-trend-up text-white"></i>
+              </div>
+              <div class="active-debtor-text text-white text-start">Recovered Debt</div>
+              <div class="active-counts text-white text-start">{{ total_recovered_debt|floatformat:2|intcomma }}</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="recovered-debtor-block remain-debts bg-secondary">
+              <div class="icon text-start">
+                <i class="fa-solid fa-money-check-dollar text-white"></i>
+              </div>
+              <div class="recovered-debtor-text text-white text-start">Remaining Debt</div>
+              <div class="recovered-counts text-white text-start">{{ total_current_debt|floatformat:2|intcomma }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Second Block -->
+     
+
+      <!-- Start of Third Block -->
+      {% if active_debtors or recovered_debtors or deleted_debtors %}
+        <div class="row">
+          <div class="col">
+            <div class="debtors-list-title pt-5">Debtors List</div>
+             <hr color="grey">
+            <div class="table-responsive total-debtor-lists pb-5">
+              <table class="table table-bordered border-success">
+                <thead class="table-success text-start">
+                  <tr>
+                    <th>Sn</th>
+                    <th>Debtor Id</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Starting Debt</th>
+                    <th>Remaining Debt</th>
+                    <th>Debt Date</th>
+                    <th>Purpose</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% with a=active_debtors|length r=recovered_debtors|length %}
+                    {# Active Debtors #}
+                    {% for debtor in active_debtors %}
+                      <tr onclick="window.location.href='{% url 'debtor_detail' debtor.id %}'">
+                        <td data-label="Sn">{{ forloop.counter }}</td>
+                        <td data-label="Debtor Id">{{ debtor.debtor_id }}</td>
+                        <td data-label="Name">{{ debtor.name }}</td>
+                        <td data-label="Mobile">{{ debtor.mobile }}</td>
+                        <td data-label="Initial Debt">{{ debtor.initial_debt|floatformat:2|intcomma }}</td>
+                        {# Use annotation to avoid property collision issues #}
+                        <td data-label="Current Debt">{{ debtor.remaining_debt|floatformat:2|intcomma }}</td>
+                        <td data-label="Debt Date">{{ debtor.debt_date|date:'Y-m-d' }}</td>
+                        <td data-label="Debt Purpose">{{ debtor.debt_purpose }}</td>
+                        <td data-label="Status" class="text-primary">Active</td>
+                      </tr>
+                    {% endfor %}
+
+                    {# Recovered Debtors #}
+                    {% for debtor in recovered_debtors %}
+                      <tr onclick="window.location.href='{% url 'debtor_detail' debtor.id %}'">
+                        <td data-label="Sn">{{ a|add:forloop.counter }}</td>
+                        <td data-label="Debtor Id">{{ debtor.debtor_id }}</td>
+                        <td data-label="Name">{{ debtor.name }}</td>
+                        <td data-label="Mobile">{{ debtor.mobile }}</td>
+                        <td data-label="Initial Debt">{{ debtor.initial_debt|floatformat:2|intcomma }}</td>
+                        <td data-label="Current Debt">{{ debtor.remaining_debt|floatformat:2|intcomma }}</td>
+                        <td data-label="Debt Date">{{ debtor.debt_date|date:'Y-m-d' }}</td>
+                        <td data-label="Debt Purpose">{{ debtor.debt_purpose }}</td>
+                        <td data-label="Status" class="text-success">Recovered</td>
+                      </tr>
+                    {% endfor %}
+
+                    {# Deleted Debtors #}
+                    {% for debtor in deleted_debtors %}
+                      <tr onclick="window.location.href='{% url 'debtor_detail' debtor.id %}'">
+                        <td data-label="Sn">{{ a|add:r|add:forloop.counter }}</td>
+                        <td data-label="Debtor Id">{{ debtor.debtor_id }}</td>
+                        <td data-label="Name">{{ debtor.name }}</td>
+                        <td data-label="Mobile">{{ debtor.mobile }}</td>
+                        <td data-label="Initial Debt">{{ debtor.initial_debt|floatformat:2|intcomma }}</td>
+                        <td data-label="Current Debt">{{ debtor.remaining_debt|floatformat:2|intcomma }}</td>
+                        <td data-label="Debt Date">{{ debtor.debt_date|date:'Y-m-d' }}</td>
+                        <td data-label="Debt Purpose">{{ debtor.debt_purpose }}</td>
+                        <td data-label="Status" class="text-danger">Deleted</td>
+                      </tr>
+                    {% endfor %}
+                  {% endwith %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="debtors-list-title pt-5">No Debtor Details</div>
+        <div class="no-debtor-image py-5 d-flex justify-content-center">
+          <img src="{% static 'images/no_debtor1.png' %}" class="img-fluid mx-auto" alt="..." />
+        </div>
+      {% endif %}
+      <!-- End of Third Block -->
+
+      <!-- Start of Fourth Block -->
+      {% if total_debt_amount or total_current_debt or total_recovered_debt %}
+        <div class="row">
+          <div class="debtors-list-title pt-5">Debt Amount Details</div>
+           <hr color="grey">
+          <div class="col debtors-debt-amount">
+            <div class="table-responsive total-debtor-lists pb-5">
+              <table class="table table-bordered border-primary">
+                <thead class="table-primary">
+                  <tr>
+                    <th>Sn</th>
+                    <th>Debtor Id</th>
+                    <th>Name</th>
+                    <th>Total Debt</th>
+                    <th>Total Recovered</th>
+                    <th class="text-start">Remaining Debt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for d in debtors %}
+                    <tr onclick="window.location.href='{% url 'debtor_detail' d.id %}'">
+                      <td>{{ forloop.counter }}</td>
+                      <td>{{ d.debtor_id }}</td>
+                      <td>{{ d.name }}</td>
+                      <td>{{ d.total_debit|floatformat:2|intcomma }}</td>
+                      <td>{{ d.total_credit|floatformat:2|intcomma }}</td>
+                      <td class="text-start">{{ d.remaining_debt|floatformat:2|intcomma }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="debtors-list-title py-5">No Debt Amount Details</div>
+        <div class="no-debtor-image py-5 d-flex justify-content-center">
+          <img src="{% static 'images/no_debt_amount1.png' %}" class="img-fluid mx-auto" alt="..." />
+        </div>
+      {% endif %}
+      <!-- End of Fourth Block -->
+    </div>
+  </div>
+{% endblock %}

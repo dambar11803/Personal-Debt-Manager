@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/add_debtor.css' %}"> {% endblock css %}
+
+{% block body %}
+ <div class="debtor-total-list">
+    <div class="debtor-totoal-title">Total Debtor</div>
+    {% if debtors %}
+        <table>
+            <tr>
+                <th>S.N</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Initial Debt</th>
+                <th>Current Debt</th>
+            </tr>
+            {% for debtor in debtors %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{forloop.counter}}</td>
+                </tr>
+            {% endfor %}    
+        </table>
+
+
+    {% else %}
+        <div>No any Debtors.</div>
+
+    {% endif %}
+ </div>
+
+{% endblock body %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/add_debtor.css' %}"> {% endblock css %}
+
+{% block body %}
+ <div class="adddebtor-container">
+    <div class="text-center add-debtor-form">
+        <h3 class="text-secondary text-decoration-underline py-3"> New Debtor</h3>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- Renders the form fields as paragraphs -->
+
+            <button type="submit">Submit</button>
+            {% comment %} <a href="{% url 'debtor_list' %}" class="text-black btn btn-success">Debtor List</a> {% endcomment %}
+        </form>
+    
+    </div>
+
+    
+ </div>
+
+{% endblock body %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/debtor_edit.css' %}">
+{% endblock css %}
+
+{% block body %}
+  <div class="debtor-edit-container my-5">
+    <div class="edit-form-title text-center pb-4">Edit Detail</div>
+    
+
+    {# Display model-level (non-field) validation errors #}
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger text-center">
+        {% for error in form.non_field_errors %}
+          <p>{{ error }}</p>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update Debtor</button>
+    </form>
+  </div>
+{% endblock %}

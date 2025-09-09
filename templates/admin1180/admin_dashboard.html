@@ -1,0 +1,137 @@
+{% extends 'admin1180/admin_base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block title %}admin-dashboard{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/admin/admin_dashboard.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="admin-dashboard container my-4">
+  <div class="admin-title text-start">Admin Dashboard</div>
+  <!-- Totals -->
+  <div class="mb-4">
+    <div class="admin-dashboard-title h5 my-5 text-success">Overall Summary</div>
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped align-middle">
+        <thead class="table-success">
+          <tr>
+            <th>Total Users</th>
+            <th>Total Debtors</th>
+            <th>Total Transactions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ total_user_count|intcomma }}</td>
+            <td>{{ total_debtor_count|intcomma }}</td>
+            <td>{{ total_transaction_count|intcomma }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Users -->
+  <div class="admin-dashboard-title h5 my-5 text-danger">Total Users</div>
+  <div class="admin-dashboard-table table-responsive">
+    <table class="table table-bordered table-hover align-middle user-table">
+      <thead class="table-danger">
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>Address</th>
+          <th>Total Debtors</th>
+          <th>Created</th>
+          <th>Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for user in users %}
+          <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.mobile }}</td>
+            <td>{{ user.address }}</td>
+            <td>
+              {% if user.active_debtors is not None %}
+                {{ user.active_debtors|intcomma }}
+              {% else %}
+                {{ user.debtors.all|length|intcomma }}
+              {% endif %}
+            </td>
+            <td>
+              {% if user.user_created_at %}
+                {{ user.user_created_at  }}
+              {% else %}—{% endif %}
+            </td>
+            <td>
+              {% if user.pk %}
+                <a href="{% url 'admin_creditor_detail' user.pk %}"><i class="fa-solid fa-user text-success"></i></a>
+              {% else %}
+                <span class="text-muted">—</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="7" class="text-center text-muted">No users found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Debtors -->
+  <div class="admin-dashboard-title h5 my-5 text-primary">Total Debtors</div>
+  <div class="admin-dashboard-debtor-table table-responsive">
+    <table class="table table-bordered table-hover align-middle debtor-table">
+      <thead class="table-primary debtor-table my-5">
+        <tr>
+          <th>Sn</th>
+          <th>Debtor ID</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>Total Debt</th>
+          <th>Status</th>
+          <th>Created By</th>
+          <th>Transactions</th>
+          <th>Creted Date</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for debtor in debtors %}
+          <tr>
+            <td>{{ forloop.counter}}</td>
+            <td>{{ debtor.debtor_id }}</td>
+            <td>{{ debtor.name }}</td>
+            <td>{{ debtor.mobile }}</td>
+            <td>{{ debtor.total_debt|floatformat:2|intcomma }}</td>
+            <td>{{ debtor.debtor_status }}</td>
+            <td>{{ debtor.created_by.username }}</td>
+            <td>{{ debtor.transactions.all|length|intcomma }}</td>
+             <td>{{ debtor.created_at }}</td>
+            <td>
+              {% if debtor.pk %}
+                <a href="{% url 'admin_debtor_detail' debtor.pk %}">
+                  <i class="fa-solid fa-eye text-center text-success"></i></a>
+              {% else %}
+                <span class="text-muted">—</span>
+              {% endif %}
+            </td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="8" class="text-center text-muted">No debtors found.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+{% endblock %}

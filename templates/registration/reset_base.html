@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>reset_base</title>
+    <link rel="stylesheet" href="{% static 'css/reset_base/reset_base.css' %}">
+    {% block css %}   {% endblock css %}
+</head>
+<body>
+    <div class="container">
+       <div class="header-bar">
+        <div class="header-title">Debt Management System</div>
+       </div>
+      
+        {% block body %}
+
+        {% endblock body %}
+      
+    </div>
+</body>
+</html>

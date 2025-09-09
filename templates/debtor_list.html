@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Debtor-list
+{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/debtor_list.css' %}" />
+{% endblock %}
+{% block body %}
+  <div class="debtorlist-container">
+    <div class="debtorlist-section">
+      {% if debtors %}
+        <div class="debtors-list">
+          <h3 class="text-start text-primary text-decoration-underline fw-bold">Debtors</h3>
+
+          <table class="table table-bordered border-primary">
+            <thead>
+              <tr>
+                <th>Sn</th>
+                <th>Debtor Id</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Starting Debt</th>
+                <th>Current Debt</th>
+                <th>Debt Date</th>
+                <th>Purpose</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for debtor in debtors %}
+                <tr>
+                  <td data-label="Sn">{{ forloop.counter }}</td>
+                  <td data-label="Debtor Id">{{ debtor.debtor_id }}</td>
+                  <td data-label="Name">{{ debtor.name }}</td>
+                  <td data-label="Mobile">{{ debtor.mobile }}</td>
+                  <td data-label="Initial Debt">{{ debtor.initial_debt }}</td>
+                  <td data-label="Current Debt">{{ debtor.current_debt }}</td>
+                  <td data-label="Debt Date">{{ debtor.debt_date|date:'Y-m-d' }}</td>
+                  <td data-label="Debt Purpose">{{ debtor.debt_purpose }}</td>
+                  <td data-label="Initial Debt">{{ debtor.debtor_status }}</td>
+                  <td data-label="Update">
+                    <a href="{% url 'debtor_edit' debtor.id %}"><i class="fa-solid fa-pen-to-square text-primary"></i></a>|
+                    <a href="{% url 'debtor_detail' debtor.id %}"><i class="fa-solid fa-eye text-success"></i></a>|
+                    <a href="{% url 'delete_debtor' debtor.id %}" class="" onclick="return confirm('Are you sure you want to delete this debtor?')"><i class="fa-solid fa-trash text-danger"></i></a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="no-debtors py-5 text-center">
+          <p>No Any Debtors</p>
+          <p class="go-back"><a href="{% url 'add_debtor' %}" class="btn btn-primary">Add new Debtor</a> </p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

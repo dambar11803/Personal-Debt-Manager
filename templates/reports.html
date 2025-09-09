@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/reports/reports.css' %}" />
+{% endblock %}
+{% block title %}reports{% endblock %}
+{% block body %}
+  <div class="report-container px-5 mx-auto">
+    
+    <div class="reports-section py-5">
+       <table class="table table-bordered">
+        <div class="report-title text-start py-3">Report Generation</div>
+        <head>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>Summary</td>
+                <td><a href="{% url 'summary_details' %}">
+                  <i class="fa-solid fa-file-excel text-success"></i>
+                </a></td>
+            </tr>
+             <tr>
+                <td>All Debtors</td>
+                <td><a href="{% url 'all_debtors_xls' %}">
+                   <i class="fa-solid fa-file-excel text-success"></i>
+                </a></td>
+            </tr>
+            <tr>
+                <td>Active Debtors</td>
+                <td><a href=""> <i class="fa-solid fa-file-excel text-success"></i></a></td>
+            </tr>
+            <tr>
+                <td>Deleted Debtors</td>
+                <td><a href=""> <i class="fa-solid fa-file-excel text-success"></i></a></td>
+            </tr>
+             <tr>
+                <td>Debtor Transaction</td>
+                <td>
+                  <form method="get" action="{% url 'debtor_transactions_xls' %}" class="d-flex gap-2">
+                    <select name="debtor_id" class="form-select" required>
+                      <option value="" selected disabled>Select debtor</option>
+                      {% for d in request.user.debtors.all %}
+                        <option value="{{ d.debtor_id }}">{{ d.name }} ({{ d.debtor_id }})</option>
+                      {% endfor %}
+                    </select>
+                    <button type="submit" class="btn btn-success"> <i class="fa-solid fa-file-excel"></i></button>
+                  </form>
+                </td>
+            </tr>
+        </head>
+       </table>
+    </div>
+  </div>
+  
+{% endblock %}

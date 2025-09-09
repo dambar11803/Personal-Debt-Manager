@@ -1,0 +1,116 @@
+/* ====== Container ====== */
+.addtran-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:white;
+  
+}
+
+/* ====== Form Card ====== */
+.addtran-form {
+  background: #ffffff;
+  padding: 1.3rem 1.7rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 500px;
+  color:grey;
+}
+
+/* ====== Heading ====== */
+.addtran-form h4 {
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: #0d6efd;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+/* ====== Form Elements ====== */
+.addtran-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #39393a;
+  font-size:1rem;
+}
+
+.addtran-form input,
+.addtran-form select,
+.addtran-form textarea {
+  color:#01172c;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.3rem;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.addtran-form input:focus,
+.addtran-form select:focus,
+.addtran-form textarea:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* ====== Error Messages ====== */
+.errorlist {
+  color: #b00020;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ====== Buttons ====== */
+.addtran-form button {
+  background: #4c8beb;
+  border: none;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 1.3rem;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 0.75rem;
+}
+
+.addtran-form button:hover {
+  background: #0b5ed7;
+}
+
+.addtran-form .btn-cancel {
+  display: inline-block;
+  background: #6c757d;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1.3rem;
+  border-radius: 0.2rem;
+  transition: background 0.3s ease;
+}
+
+.addtran-form .btn-cancel:hover {
+  background: #5a6268;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 576px) {
+  .addtran-form {
+    padding: 1.5rem;
+  }
+
+  .addtran-form h4 {
+    font-size: 1.1rem;
+  }
+
+  .addtran-form button,
+  .addtran-form .btn-cancel {
+    width: 100%;
+    margin: 0 0 0.75rem 0;
+  }
+}

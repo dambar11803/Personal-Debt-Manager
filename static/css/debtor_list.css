@@ -1,0 +1,196 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7fc;
+  color: #333;
+}
+
+/* Container */
+.debtorlist-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 10px;
+}
+
+.debtorlist-section {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.debtorlist-container h1 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+td {
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+}
+
+/* Hover effect for rows */
+/* tbody tr:hover {
+  background-color: #eaf2ff;
+  transform: scale(1.02);
+  transition: all 0.3s ease;
+} */
+
+/* Actions Column */
+table a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+
+table a:hover {
+  color: #0056b3;
+}
+
+table i {
+  transition: transform 0.2s ease;
+}
+
+table a:hover i {
+  transform: scale(1.1);
+}
+
+/* No Debtors Message */
+.no-debtors {
+  min-height:100vh;
+  text-align: center;
+  font-size: 2rem;
+  color: #888;
+  padding: 20px;
+  
+}
+
+/* Responsive Table */
+/* ===== Tablet / iPad view (768px–1024px) ===== */
+@media (min-width: 577px) and (max-width: 1024px) {
+  .debtorlist-container .table {
+    font-size: .95rem;
+  }
+  .debtorlist-container th,
+  .debtorlist-container td {
+    padding: .5rem .6rem !important;
+  }
+
+  /* Hide columns: Starting Debt (5), Current Debt (6), Debt Date (7), Purpose (8) */
+  .debtorlist-container thead th:nth-child(5),
+  .debtorlist-container thead th:nth-child(6),
+  .debtorlist-container thead th:nth-child(7),
+  .debtorlist-container thead th:nth-child(8),
+  .debtorlist-container tbody td:nth-child(5),
+  .debtorlist-container tbody td:nth-child(6),
+  .debtorlist-container tbody td:nth-child(7),
+  .debtorlist-container tbody td:nth-child(8) {
+    display: none !important;
+  }
+
+  /* Keep name and mobile readable */
+  .debtorlist-container tbody td:nth-child(3),
+  .debtorlist-container tbody td:nth-child(4) {
+    max-width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Actions: center and larger icons */
+  .debtorlist-container tbody td:nth-child(10),
+  .debtorlist-container thead th:nth-child(10) {
+    text-align: center;
+    white-space: nowrap;
+  }
+  .debtorlist-container tbody td:nth-child(10) a {
+    font-size: 1.1rem;
+    margin-inline: .4rem;
+  }
+}
+
+
+/* ===== Mobile view: show only Sn, Debtor Id, Name, Actions ===== */
+/* Bootstrap “sm” and below */
+@media (max-width: 576px) {
+  /* Smaller font + tighter padding for mobile */
+  .debtorlist-container .table {
+    font-size: .9rem;
+  }
+  .debtorlist-container th,
+  .debtorlist-container td {
+    padding: .4rem .5rem !important;
+  }
+
+  /* Hide columns 4–9 (Mobile, Starting Debt, Current Debt, Debt Date, Purpose, Status) */
+  .debtorlist-container thead th:nth-child(4),
+  .debtorlist-container thead th:nth-child(5),
+  .debtorlist-container thead th:nth-child(6),
+  .debtorlist-container thead th:nth-child(7),
+  .debtorlist-container thead th:nth-child(8),
+  .debtorlist-container thead th:nth-child(9),
+  .debtorlist-container tbody td:nth-child(4),
+  .debtorlist-container tbody td:nth-child(5),
+  .debtorlist-container tbody td:nth-child(6),
+  .debtorlist-container tbody td:nth-child(7),
+  .debtorlist-container tbody td:nth-child(8),
+  .debtorlist-container tbody td:nth-child(9) {
+    display: none !important;
+  }
+
+  /* Optional: make "Name" more compact with ellipsis if long */
+  .debtorlist-container tbody td:nth-child(3),
+  .debtorlist-container thead th:nth-child(3) {
+    max-width: 12rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Actions cell: center and make icons easy to tap */
+  .debtorlist-container tbody td:nth-child(10),
+  .debtorlist-container thead th:nth-child(10) {
+    text-align: center;
+    white-space: nowrap;
+  }
+  .debtorlist-container tbody td:nth-child(10) a {
+    font-size: 1.05rem;   /* slightly larger tap targets */
+    margin-inline: .35rem;
+  }
+
+  /* Optional: reduce border clutter on very small screens */
+  .debtorlist-container .table.table-bordered > :not(caption) > * > * {
+    border-width: 1px;
+  }
+}

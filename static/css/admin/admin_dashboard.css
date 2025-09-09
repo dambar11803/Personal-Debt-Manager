@@ -1,0 +1,215 @@
+/* ========================
+   Admin Dashboard Font Size
+   ======================== */
+.admin-title{
+  font-size:1.1rem;
+  color:red;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  font-weight: 500;
+}
+/* Reduce overall table font */
+.admin-dashboard table {
+  font-size: 0.9rem;   /* smaller than Bootstrap default */
+}
+
+/* Reduce header font size */
+.admin-dashboard th {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Reduce cell font size */
+.admin-dashboard td {
+  font-size: 0.9rem;
+}
+
+/* Reduce title font size */
+.admin-dashboard-title {
+  font-size: 1.2rem !important;  /* override Bootstrap h5 */
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  font-weight: 500;
+}
+
+
+/* Mobile: show only Username (1), Mobile (3), Profile (7) */
+@media (max-width: 680px)
+{
+  /* Hide headers 2,4,5,6 */
+  .admin-dashboard-table thead th:nth-child(2),
+  .admin-dashboard-table thead th:nth-child(4),
+  .admin-dashboard-table thead th:nth-child(5),
+  .admin-dashboard-table thead th:nth-child(6),
+  /* Hide cells 2,4,5,6 */
+  .admin-dashboard-table tbody td:nth-child(2),
+  .admin-dashboard-table tbody td:nth-child(4),
+  .admin-dashboard-table tbody td:nth-child(5),
+  .admin-dashboard-table tbody td:nth-child(6){
+    display: none !important;
+  }
+
+  /* Tidy up remaining columns */
+  .admin-dashboard-table thead th:nth-child(1),
+  .admin-dashboard-table tbody td:nth-child(1){
+    width: 45%;
+    font-weight: 600;
+  }
+  .admin-dashboard-table thead th:nth-child(3),
+  .admin-dashboard-table tbody td:nth-child(3){
+    width: 40%;
+    text-align: left;
+  }
+  .admin-dashboard-table thead th:nth-child(7),
+  .admin-dashboard-table tbody td:nth-child(7){
+    width: 15%;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Slightly smaller font for compact view */
+  .admin-dashboard-table table{
+    font-size: .9rem;
+  }
+  .admin-dashboard-title{
+    font-size: 1rem !important;
+  }
+
+  /* css for Debtors Detail  */
+  /* Mobile: show only Sn (1), Name (3), Status (6), Detail (10) for Debtors table */
+
+  .admin-dashboard-debtor-table thead th:nth-child(2),
+  .admin-dashboard-debtor-table thead th:nth-child(4),
+  .admin-dashboard-debtor-table thead th:nth-child(5),
+  .admin-dashboard-debtor-table thead th:nth-child(7),
+  .admin-dashboard-debtor-table thead th:nth-child(8),
+  .admin-dashboard-debtor-table thead th:nth-child(9),
+  .admin-dashboard-debtor-table tbody td:nth-child(2),
+  .admin-dashboard-debtor-table tbody td:nth-child(4),
+  .admin-dashboard-debtor-table tbody td:nth-child(5),
+  .admin-dashboard-debtor-table tbody td:nth-child(7),
+  .admin-dashboard-debtor-table tbody td:nth-child(8),
+  .admin-dashboard-debtor-table tbody td:nth-child(9){
+    display: none !important;
+  }
+
+  /* Keep and size visible columns: Sn(1), Name(3), Status(6), Detail(10) */
+  .admin-dashboard-debtor-table thead th:nth-child(1),
+  .admin-dashboard-debtor-table tbody td:nth-child(1){
+    width: 12%;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .admin-dashboard-debtor-table thead th:nth-child(3),
+  .admin-dashboard-debtor-table tbody td:nth-child(3){
+    width: 48%;
+    overflow-wrap: anywhere;
+  }
+
+  .admin-dashboard-debtor-table thead th:nth-child(6),
+  .admin-dashboard-debtor-table tbody td:nth-child(6){
+    width: 25%;
+    white-space: nowrap;
+  }
+
+  .admin-dashboard-debtor-table thead th:nth-child(10),
+  .admin-dashboard-debtor-table tbody td:nth-child(10){
+    width: 15%;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* Optional: compact font + bigger tap target for Detail icon */
+  .admin-dashboard-debtor-table table{ font-size: .9rem; }
+  .admin-dashboard-debtor-table td:nth-child(10) a{
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: .25rem .45rem; border-radius: .5rem;
+  }
+}
+
+
+/* iPad-only view: show Sn, Name, Mobile, Total Debt, Transactions, Detail */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Ensure we’re targeting only this table */
+  .debtor-table thead th,
+  .debtor-table tbody td {
+    /* optional: tighter spacing for iPad */
+    padding: .5rem .6rem;
+    white-space: nowrap;
+  }
+
+  /* Hide unwanted columns: 
+     (2) Debtor ID, (6) Status, (7) Created By, (9) Created Date */
+  .debtor-table thead th:nth-child(2),
+  .debtor-table tbody td:nth-child(2),
+  .debtor-table thead th:nth-child(6),
+  .debtor-table tbody td:nth-child(6),
+  .debtor-table thead th:nth-child(7),
+  .debtor-table tbody td:nth-child(7),
+  .debtor-table thead th:nth-child(9),
+  .debtor-table tbody td:nth-child(9) {
+    display: none;
+  }
+
+  /* Optional: give remaining columns some sensible widths */
+  .debtor-table thead th:nth-child(1),
+  .debtor-table tbody td:nth-child(1) { width: 56px; text-align: center; }
+  .debtor-table thead th:nth-child(3),
+  .debtor-table tbody td:nth-child(3) { width: 22%; }
+  .debtor-table thead th:nth-child(4),
+  .debtor-table tbody td:nth-child(4) { width: 18%; }
+  .debtor-table thead th:nth-child(5),
+  .debtor-table tbody td:nth-child(5) { width: 16%; text-align: right; }
+  .debtor-table thead th:nth-child(8),
+  .debtor-table tbody td:nth-child(8) { width: 12%; text-align: center; }
+  .debtor-table thead th:nth-child(10),
+  .debtor-table tbody td:nth-child(10) { width: 90px; text-align: center; }
+
+  /* Optional polish */
+  .debtor-table thead { position: sticky; top: 0; z-index: 1; }
+  .debtor-table tbody tr:hover { background: rgba(13, 110, 253, .06); }
+  .debtor-table i.fa-eye { font-size: 1rem; }
+}
+
+/* (Optional) Make the same layout apply to iPad Pro widths as well */
+@media screen and (min-width: 1025px) and (max-width: 1180px) {
+  .debtor-table thead th:nth-child(2),
+  .debtor-table tbody td:nth-child(2),
+  .debtor-table thead th:nth-child(6),
+  .debtor-table tbody td:nth-child(6),
+  .debtor-table thead th:nth-child(7),
+  .debtor-table tbody td:nth-child(7),
+  .debtor-table thead th:nth-child(9),
+  .debtor-table tbody td:nth-child(9) { display: none; }
+}
+
+/* iPad-only view: hide Email column */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  /* Target 2nd column: Email */
+  .user-table thead th:nth-child(2),
+  .user-table tbody td:nth-child(2) {
+    display: none;
+  }
+
+  /* Optional tweaks: adjust spacing of visible columns */
+  .user-table thead th,
+  .user-table tbody td {
+    padding: .5rem .6rem;
+    white-space: nowrap;
+  }
+
+  .user-table thead th:nth-child(1),
+  .user-table tbody td:nth-child(1) { width: 20%; }
+  .user-table thead th:nth-child(3),
+  .user-table tbody td:nth-child(3) { width: 18%; }
+  .user-table thead th:nth-child(4),
+  .user-table tbody td:nth-child(4) { width: 20%; }
+  .user-table thead th:nth-child(5),
+  .user-table tbody td:nth-child(5) { width: 14%; text-align: center; }
+  .user-table thead th:nth-child(6),
+  .user-table tbody td:nth-child(6) { width: 16%; }
+  .user-table thead th:nth-child(7),
+  .user-table tbody td:nth-child(7) { width: 8%; text-align: center; }
+}
+

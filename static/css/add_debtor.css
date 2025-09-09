@@ -1,0 +1,124 @@
+/* Container styles */
+.adddebtor-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.add-debtor-form {
+    background-color: #f8f9fa;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-debtor-form h3 {
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+/* Form styling */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Form field styling */
+form p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+form p label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #333;
+    text-align: left;
+}
+
+form p input,
+form p select,
+form p textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+form p input:focus,
+form p select:focus,
+form p textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Textarea specific styling */
+form p textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Full width fields (like textarea or special fields) */
+form p.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Button styling */
+button[type="submit"] {
+    grid-column: 1 / -1;
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .adddebtor-container {
+        padding: 10px;
+    }
+    
+    .add-debtor-form {
+        padding: 20px;
+    }
+}
+
+/* Error styling */
+.errorlist {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 5px;
+    list-style: none;
+    padding: 0;
+}
+
+.errorlist li {
+    margin-bottom: 2px;
+}
+
+/* Help text styling */
+.helptext {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 2px;
+}

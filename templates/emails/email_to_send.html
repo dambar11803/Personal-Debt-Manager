@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <body style="font-family: Arial, sans-serif;">
+    <h2>New Debtor Created</h2>
+    <p>Hello,</p>
+    <p>A new debtor has been created successfully.</p>
+    <table cellpadding="6" cellspacing="0" border="1" style="border-collapse: collapse;">
+      <tr><th align="left">Name</th><td>{{ debtor.name }}</td></tr>
+      <tr><th align="left">Mobile</th><td>{{ debtor.mobile }}</td></tr>
+      <tr><th align="left">Initial Debt</th><td>{{ debtor.initial_debt }}</td></tr>
+      <tr><th align="left">Created By</th><td>{{ debtor.created_by.username }}</td></tr>
+    </table>
+    <p style="margin-top:16px;">Debt Management System<br>
+    Thank you.</p>
+    <p style="color: gray; font-size: 12px;">
+        This is an automated message. Please do not reply.
+    </p>
+  </body>
+</html>
+ 

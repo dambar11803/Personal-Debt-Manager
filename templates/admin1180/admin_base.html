@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        admin-base
+      {% endblock %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <!-- Font aweson cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    {% block css %}
+
+    {% endblock %}
+  </head>
+
+  <body>
+    <!-- First Navbar (Non-Responsive) -->
+    <nav class="navbar navbar-dark">
+      <div class="container-fluid px-3">
+        <a class="navbar-brand d-none d-md-block" href="{% url 'admin_dashboard' %}">Personal Debt Manager</a>
+
+        <div class="navbar-links">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin_dashboard' %}"><i class="fa-solid fa-house"></i> <span>Dashboard</span></a>
+            </li>
+          
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'admin_reports' %}"><i class="fa-solid fa-file-excel"></i> <span>Report</span></a>
+            </li>
+          </ul>
+          <!-- Title Text on Right Side -->
+
+          <div class="profile">
+            <span class="profile-pic">
+              <a href="{% url 'admin_profile' %}">
+              {% if user.profile_pic %}
+                <img src="{{ user.profile_pic.url }}" alt="profile-pic" class="rounded-circle profile-img" />
+              {% else %}
+                <img src="{% static 'images/default_pic.png' %}" alt="Profile" class="rounded-circle profile-img" />
+              {% endif %}</a>
+            </span>
+            <span class="px-4"><a href="{% url 'logout' %}"><i class="fa-solid fa-arrow-right-from-bracket text-bg-danger"></i></a></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="main-container py-5">
+      <!-- Messages Section -->
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            {{ message }}
+          </div>
+        {% endfor %}
+      {% endif %}
+      <!-- End of Messges section -->
+      {% block body %}
+
+      {% endblock %}
+    </div>
+
+    <!-- Footer Section -->
+    <!-- Footer -->
+    <footer class="footer text-light py-5">
+      <div class="container">
+        <div class="row g-4 align-items-start">
+          <!-- About (hidden on mobile) -->
+          <div class="col-12 col-md-3">
+            <div class="about-app-footer">
+              <div class="app-info fw-bold fs-5">About App</div>
+              <p class="app-info-intro mt-3">A simple web app designed to help you track, manage, and analyze debts. Stay organized with debtor records, monitor payments, and generate insightful reports for control.</p>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div class="col-12 col-md-3">
+            <div class="quick-links-footer">
+              <div class="quick-links-title fw-bold mb-3">Quick Links</div>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Dashboard</a>
+                </li>
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Add Debtor</a>
+                </li>
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Debtor List</a>
+                </li>
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Transactions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Policy Links -->
+          <div class="col-12 col-md-3">
+            <div class="contact-footer">
+              <div class="contact-footer-title fw-bold mb-3">Policy</div>
+              <ul class="list-unstyled">
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Terms and Conditions</a>
+                </li>
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Feedback</a>
+                </li>
+                <li>
+                  <a href="#" class="text-light text-decoration-none">Manual</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="col-12 col-md-3">
+            <div class="contact-footer">
+              <div class="contact-footer-title fw-bold mb-3">Contact</div>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="fa-solid fa-location-dot me-2"></i> Itahari-20, Koshi, Nepal
+                </li>
+                <li>
+                  <i class="fa-solid fa-envelope me-2"></i> <a href="mailto:raidamb2@gmail.com" class="text-light text-decoration-none">raidamb2@gmail.com</a>
+                </li>
+                <li>
+                  <i class="fa-solid fa-globe me-2"></i> <a href="http://www.dambarrai.com.np" class="text-light text-decoration-none">www.dambarrai.com.np</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Wait 2 seconds, then fade out all alerts
+      setTimeout(function() {
+          document.querySelectorAll('.alert').forEach(function(alert) {
+              alert.classList.remove('show');  // Bootstrap fade-out
+              alert.classList.add('fade');
+              setTimeout(() => alert.remove(), 500); // Remove from DOM after fade-out
+          });
+      }, 2000);
+  </script>
+  </body>
+</html>

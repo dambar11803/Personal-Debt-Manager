@@ -1,0 +1,421 @@
+/* ===== DASHBOARD RESPONSIVE CSS ===== */
+
+/* Base Variables */
+:root {
+  --primary-color: #0d6efd;
+  --success-color: #198754;
+  --secondary-color: #6c757d;
+  --danger-color: #dc3545;
+  --white: #ffffff;
+  --light-gray: #f8f9fa;
+  --dark-gray: #343a40;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 3rem;
+}
+
+/* Container Styles */
+.container {
+  max-width: 100%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+.container-debtor-stat {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: var(--spacing-lg);
+  margin: var(--spacing-md) 0;
+}
+
+/* Title Styles */
+.title-block {
+  margin-bottom: var(--spacing-lg);
+}
+
+.title-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark-gray);
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Stats Cards - First Block (Debtor Counts) */
+.debtor-stats-count {
+  margin-bottom: var(--spacing-xl);
+}
+
+.debtor-stats-count .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin: 0;
+}
+
+.debtor-stats-count .col {
+  flex: 1;
+  min-width: 250px;
+  padding: 0;
+}
+
+/* Individual Stat Blocks */
+.total-debtor-block,
+.active-debtor-block,
+.recovered-debtor-block,
+.recovery-rate-block {
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.total-debtor-block:hover,
+.active-debtor-block:hover,
+.recovered-debtor-block:hover,
+.recovery-rate-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon Styles */
+.icon {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-sm);
+  opacity: 0.9;
+}
+
+/* Text Styles */
+.total-debtor-text,
+.active-debtor-text,
+.recovered-debtor-text,
+.recovery-debtor-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.debtor-counts,
+.active-counts,
+.recovered-counts,
+.recovery-rate {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* Stats Cards - Second Block (Debt Amounts) */
+.debtor-stats-amount {
+  margin-bottom: var(--spacing-xl);
+}
+
+.debtor-stats-amount .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin: 0;
+}
+
+.debtor-stats-amount .col {
+  flex: 1;
+  min-width: 300px;
+  padding: 0;
+}
+
+/* Table Styles */
+.debtors-list-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-gray);
+  text-align: center;
+  /* margin:20px 0; */
+  text-align: start;
+  /* text-decoration: underline; 
+  text-underline-offset: 10px; */
+}
+
+.table-responsive {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  background: var(--white);
+}
+
+.table {
+  margin-bottom: 0;
+  font-size: 0.9rem;
+}
+
+.table th {
+  background: var(--success-color) !important;
+  color: var(--white) !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none !important;
+  padding: var(--spacing-md);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table td {
+  padding: var(--spacing-md);
+  vertical-align: middle;
+  border-bottom: 1px solid #dee2e6;
+  transition: var(--transition);
+}
+
+.table tbody tr {
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.table tbody tr:hover {
+  background-color: rgba(13, 110, 253, 0.05);
+  transform: scale(1.01);
+}
+
+/* No Data States */
+.no-debtor-image {
+  text-align: center;
+  padding: var(--spacing-xl) 0;
+}
+
+.no-debtor-image img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  opacity: 0.7;
+}
+
+/* Status Colors */
+.text-primary { color: var(--primary-color) !important; }
+.text-success { color: var(--success-color) !important; }
+.text-danger { color: var(--danger-color) !important; }
+.text-secondary { color: var(--secondary-color) !important; }
+
+/* Background Colors */
+.bg-primary { background-color: var(--primary-color) !important; }
+.bg-success { background-color: var(--success-color) !important; }
+.bg-secondary { background-color: var(--secondary-color) !important; }
+.bg-danger { background-color: var(--danger-color) !important; }
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1200px;
+  }
+  
+  .title-text {
+    font-size: 3rem;
+  }
+  
+  .debtor-counts,
+  .active-counts,
+  .recovered-counts,
+  .recovery-rate {
+    font-size: 2.5rem;
+  }
+}
+
+/* Desktop (992px to 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .debtor-stats-count .col,
+  .debtor-stats-amount .col {
+    min-width: 220px;
+  }
+  
+  .table {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet (768px to 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .title-text {
+    font-size: 2rem;
+  }
+  
+  .debtor-stats-count .row,
+  .debtor-stats-amount .row {
+    justify-content: center;
+  }
+  
+  .debtor-stats-count .col,
+  .debtor-stats-amount .col {
+    min-width: 300px;
+    max-width: 400px;
+    margin-bottom: var(--spacing-md);
+  }
+  
+  .debtor-counts,
+  .active-counts,
+  .recovered-counts,
+  .recovery-rate {
+    font-size: 2rem;
+  }
+  
+  .table-responsive {
+    font-size: 0.8rem;
+  }
+  
+  .container-debtor-stat {
+    padding: var(--spacing-md);
+  }
+}
+
+
+/* Mobile: show only Sn, Name, Remaining Debt, Status */
+@media (max-width: 576px) {
+  /* tighten spacing */
+  .total-debtor-lists table,
+  .debtors-debt-amount table {
+    font-size: 0.7rem;
+  }
+  .total-debtor-lists table th,
+  .total-debtor-lists table td {
+    padding: 6px 6px;
+  }
+
+  /* HIDE unwanted columns (2,4,5,7,8) */
+  .total-debtor-lists table thead tr th:nth-child(2),
+  .total-debtor-lists table thead tr th:nth-child(4),
+  .total-debtor-lists table thead tr th:nth-child(5),
+  .total-debtor-lists table thead tr th:nth-child(7),
+  .total-debtor-lists table thead tr th:nth-child(8),
+  .total-debtor-lists table tbody tr td:nth-child(2),
+  .total-debtor-lists table tbody tr td:nth-child(4),
+  .total-debtor-lists table tbody tr td:nth-child(5),
+  .total-debtor-lists table tbody tr td:nth-child(7),
+  .total-debtor-lists table tbody tr td:nth-child(8) {
+    display: none !important;
+  }
+
+  /* Optional polish */
+  /* Prevent wrapping weirdness on names */
+  .total-debtor-lists table tbody tr td:nth-child(3) {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Align Remaining Debt numbers nicely (column 6) */
+  .total-debtor-lists table thead tr th:nth-child(6),
+  .total-debtor-lists table tbody tr td:nth-child(6) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* Center or emphasize Status (column 9) */
+  .total-debtor-lists table thead tr th:nth-child(9),
+  .total-debtor-lists table tbody tr td:nth-child(9) {
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .debtor-stats-count .row, 
+    .debtor-stats-amount .row {
+        flex-direction: column;
+    }
+    
+    .debtor-stats-count .col, 
+    .debtor-stats-amount .col {
+        margin-bottom: 15px;
+    }
+    
+    .charts-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* Animation for stat blocks */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.total-debtor-block, 
+.active-debtor-block, 
+.recovered-debtor-block, 
+.recovery-rate-block {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.total-debtor-block { animation-delay: 0.1s; }
+.active-debtor-block { animation-delay: 0.2s; }
+.recovered-debtor-block { animation-delay: 0.3s; }
+.recovery-rate-block { animation-delay: 0.4s; }
+
+/* Chart canvas styling */
+canvas {
+    width: 70% !important;
+    height: 250px !important;
+}
+
+/* iPad-only view: show Sn, Name, Starting Debt, Remaining Debt, Status */
+@media (min-width: 768px) and (max-width: 1024.98px) {
+  .total-debtor-lists table {
+    table-layout: fixed;
+  }
+  .total-debtor-lists thead th,
+  .total-debtor-lists tbody td {
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+
+  /* Hide columns: Debtor Id (2), Mobile (4), Debt Date (7), Purpose (8) */
+  .total-debtor-lists thead th:nth-child(2),
+  .total-debtor-lists tbody td:nth-child(2),
+  .total-debtor-lists thead th:nth-child(4),
+  .total-debtor-lists tbody td:nth-child(4),
+  .total-debtor-lists thead th:nth-child(7),
+  .total-debtor-lists tbody td:nth-child(7),
+  .total-debtor-lists thead th:nth-child(8),
+  .total-debtor-lists tbody td:nth-child(8) {
+    display: none;
+  }
+
+  /* Widths & alignment for visible columns: (1)Sn (3)Name (5)Starting (6)Remaining (9)Status */
+  .total-debtor-lists thead th:nth-child(1),
+  .total-debtor-lists tbody td:nth-child(1) { width: 8%; text-align: center; }
+
+  .total-debtor-lists thead th:nth-child(3),
+  .total-debtor-lists tbody td:nth-child(3) { width: 32%; }
+
+  .total-debtor-lists thead th:nth-child(5),
+  .total-debtor-lists tbody td:nth-child(5) { width: 20%; text-align: right; }
+
+  .total-debtor-lists thead th:nth-child(6),
+  .total-debtor-lists tbody td:nth-child(6) { width: 24%; text-align: right; }
+
+  .total-debtor-lists thead th:nth-child(9),
+  .total-debtor-lists tbody td:nth-child(9) { width: 16%; text-align: center; }
+
+  /* Tap-friendly rows */
+  .total-debtor-lists tbody tr { cursor: pointer; }
+}

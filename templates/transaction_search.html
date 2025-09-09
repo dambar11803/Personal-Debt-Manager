@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Transaction Search
+{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/search_transaction.css' %}" />
+{% endblock %}
+
+{% block body %}
+  <div class="transaction-search-container">
+    
+    <div class="form-section">
+      <form method="post">
+        {% csrf_token %}
+        <h4 class="text-decoration-underline text-primary">Choose Debtor for Transaction</h4>
+        <!-- Debtor dropdown -->
+        <div class="form-group">
+          <label for="id_debtor_id">Debtor: {{debtor.name}}</label>
+          <select name="debtor_id" id="id_debtor_id" required>
+            <option value="" selected disabled>-- Select Debtor --</option>
+            {% for d in debtor %}
+              <option value="{{ d.debtor_id }}">{{ d.name }} ({{ d.debtor_id }})</option>
+            {% empty %}
+              <option disabled>No debtors found</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <!-- Transaction Type dropdown -->
+        <div class="form-group">
+          <label for="id_tran_type">Transaction Type</label>
+          <select name="tran_type" id="id_tran_type" required>
+            <option value="debit">Debit</option>
+            <option value="credit">Credit</option>
+          </select>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Search</button>
+        </div>
+      </form> <!-- ✅ close form before closing form-section -->
+    </div> <!-- ✅ close form-section -->
+  </div> <!-- ✅ close transaction-search-container -->
+{% endblock %}

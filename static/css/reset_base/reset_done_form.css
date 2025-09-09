@@ -1,0 +1,128 @@
+/* =========================
+   Password Reset Done
+   File: reset_base/reset_done_form.css
+   ========================= */
+
+:root{
+  --bg: #f6f8fc;
+  --text: #0f172a;          /* slate-900 */
+  --muted: #475569;         /* slate-600 */
+  --card: #ffffff;
+  --border: #e2e8f0;        /* slate-200 */
+  --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+  --accent: #16a34a;        /* green-600 */
+  --accent-soft: rgba(22,163,74,.12);
+}
+
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b1220;
+    --text: #e5e7eb;
+    --muted: #9aa4b2;
+    --card: #0f172a;
+    --border: #1f2937;
+    --shadow: 0 10px 30px rgba(0,0,0,.45);
+    --accent: #22c55e;
+    --accent-soft: rgba(34,197,94,.18);
+  }
+}
+
+/* Base */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans";
+  background:
+    radial-gradient(1100px 1100px at 15% 0%, rgba(34,197,94,.08), transparent 60%) no-repeat,
+    radial-gradient(1100px 1100px at 85% 100%, rgba(59,130,246,.08), transparent 60%) no-repeat,
+    var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Center the card */
+.password-reset-done{
+  min-height: 100svh;                 /* mobile-safe viewport */
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+}
+
+
+.password-reset-done::before,
+.password-reset-done::after { content: ""; }
+
+.password-reset-done .card{
+  width: 100%;
+  max-width: 460px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 28px;
+  text-align: center;
+  animation: cardIn .28s ease-out;
+}
+
+/* Optional success icon using pure CSS */
+.password-reset-done .icon{
+  width: 56px;
+  height: 56px;
+  margin: 2px auto 12px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  position: relative;
+}
+.password-reset-done .icon::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+.password-reset-done .icon::after{
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 26px;
+  width: 22px;
+  height: 12px;
+  border: 3px solid var(--accent);
+  border-top: 0;
+  border-left: 0;
+  transform: rotate(45deg);
+}
+
+/* Typography */
+.password-reset-done h2{
+  margin: 6px 0 6px;
+  font-size: clamp(20px, 2.2vw, 24px);
+  line-height: 1.2;
+}
+.password-reset-done p{
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* Link (if you add a “Back to login” link later) */
+.password-reset-done a{
+  color: inherit;
+  text-underline-offset: 3px;
+}
+.password-reset-done a:hover{ text-decoration: underline; }
+
+/* Animation + reduced motion */
+@keyframes cardIn{
+  from{ opacity: 0; transform: translateY(6px) scale(.98); }
+  to  { opacity: 1; transform: translateY(0)  scale(1); }
+}
+@media (prefers-reduced-motion: reduce){
+  .password-reset-done .card{ animation: none; }
+}
+
+/* Responsive tweaks */
+@media (min-width: 640px){
+  .password-reset-done .card{ padding: 32px; border-radius: 18px; }
+}

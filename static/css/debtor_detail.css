@@ -1,0 +1,312 @@
+/* Debtor Detail Page Styles */
+
+.debtordetail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Header Styles */
+.debtordetail-container h4 {
+  color: #007bff;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 8px;
+}
+
+.text-sucess {
+  color: #28a745 !important;
+}
+
+/* Button Styles */
+.debtor-btn {
+  margin-bottom: 25px;
+}
+
+.debtor-btn .btn {
+  padding: 10px 20px;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.debtor-btn .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Debtor Details Table */
+.debtor-detail .table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.debtor-detail .table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  padding: 12px 15px;
+  border: 1px solid #dee2e6;
+  text-align: left;
+  width: 20%;
+}
+
+.debtor-detail .table td {
+  padding: 12px 15px;
+  border: 1px solid #dee2e6;
+  color: #333;
+  font-weight: 500;
+}
+
+.debtor-detail .table tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.debtor-detail .table tr:hover {
+  background-color: #e3f2fd;
+  transition: background-color 0.3s ease;
+}
+
+/* Transaction Table Styles */
+.transaction-table {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.transaction-table thead {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+}
+
+.transaction-table thead th {
+  padding: 15px 12px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.transaction-table tbody td {
+  padding: 12px 10px;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #e9ecef;
+  font-size: 13px;
+}
+
+.transaction-table tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.transaction-table tbody tr:hover {
+  background-color: #e3f2fd;
+  transition: background-color 0.3s ease;
+}
+
+/* Special styling for first row (initial debt entry) */
+.transaction-table tbody tr:first-child {
+  background-color: #fff3cd;
+  font-weight: 600;
+}
+
+.transaction-table tbody tr:first-child:hover {
+  background-color: #ffeaa7;
+}
+
+/* Amount columns styling */
+.transaction-table tbody td:nth-child(4), /* Debit */
+.transaction-table tbody td:nth-child(5), /* Credit */
+.transaction-table tbody td:nth-child(10) /* Current Debt */ {
+  font-weight: 600;
+  font-family: 'Courier New', monospace;
+}
+
+/* Debit amounts (red) */
+.transaction-table tbody td:nth-child(4) {
+  color: #dc3545;
+}
+
+/* Credit amounts (green) */
+.transaction-table tbody td:nth-child(5) {
+  color: #28a745;
+}
+
+/* Current debt amounts */
+.transaction-table tbody td:nth-child(10) {
+  color: #007bff;
+  font-weight: 700;
+}
+
+/* Document/Voucher Links */
+.transaction-table a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.transaction-table img {
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease;
+}
+
+.transaction-table img:hover {
+  transform: scale(1.5);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.transaction-table .fa-file-pdf:hover {
+  transform: scale(1.2);
+  color: #c82333 !important;
+}
+
+/* Empty state styling */
+.transaction-table tbody tr td[colspan] {
+  padding: 40px;
+  color: #6c757d;
+  font-style: italic;
+  background-color: #f8f9fa;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+  font-size: 0.85rem;  /* adjust value as needed (e.g., 0.8rem or 12px) */
+  padding: 0.4rem 0.6rem; /* tighten spacing to match smaller text */
+}
+
+/* Optional: if you want the whole table text to shrink uniformly */
+.table.table-bordered {
+  font-size: 0.85rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .debtordetail-container {
+    padding: 15px;
+  }
+  
+  .debtor-detail .table th,
+  .debtor-detail .table td {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .transaction-table {
+    font-size: 12px;
+  }
+  
+  .transaction-table thead th,
+  .transaction-table tbody td {
+    padding: 10px 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .debtordetail-container h4 {
+    font-size: 1rem;
+  }
+  
+  .debtor-btn {
+    text-align: center !important;
+    margin-bottom: 20px;
+  }
+  
+  .debtor-detail .table {
+    font-size: 13px;
+  }
+  
+  .transaction-table {
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+  
+  .transaction-table table {
+    min-width: 800px;
+  }
+}
+
+@media (max-width: 576px) {
+  .debtordetail-container {
+    padding: 10px;
+  }
+  
+  .debtor-detail .table th,
+  .debtor-detail .table td {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+  
+  .transaction-table thead th,
+  .transaction-table tbody td {
+    padding: 8px 6px;
+    font-size: 11px;
+  }
+  
+  .transaction-table img {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+   .transaction-table thead th:nth-child(2),
+  .transaction-table thead th:nth-child(3),
+  .transaction-table thead th:nth-child(6),
+  .transaction-table thead th:nth-child(7),
+  .transaction-table thead th:nth-child(8),
+  .transaction-table thead th:nth-child(9),
+  .transaction-table tbody td:nth-child(2),
+  .transaction-table tbody td:nth-child(3),
+  .transaction-table tbody td:nth-child(6),
+  .transaction-table tbody td:nth-child(7),
+  .transaction-table tbody td:nth-child(8),
+  .transaction-table tbody td:nth-child(9) {
+    display: none;
+  }
+
+  /* Adjust widths for the visible columns */
+  .transaction-table thead th:nth-child(1),
+  .transaction-table tbody td:nth-child(1) { /* Sn */
+    width: 12%;
+    text-align: center;
+  }
+
+  .transaction-table thead th:nth-child(4),
+  .transaction-table tbody td:nth-child(4) { /* Debit */
+    width: 22%;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .transaction-table thead th:nth-child(5),
+  .transaction-table tbody td:nth-child(5) { /* Credit */
+    width: 22%;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  .transaction-table thead th:nth-child(10),
+  .transaction-table tbody td:nth-child(10) { /* Current Debt */
+    width: 30%;
+    text-align: right;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  /* Optional: shrink font-size for compactness */
+  .transaction-table {
+    font-size: 0.85rem;
+  }
+  .transaction-table th,
+  .transaction-table td {
+    padding: 0.4rem 0.5rem;
+  }
+}
+

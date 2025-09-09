@@ -1,0 +1,355 @@
+/* Dashboard Container */
+.container-debtor-stat {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+/* Title Styles */
+.title-text {
+    font-size: 26px;
+    font-weight: 700;
+    color: #3b5977;
+    padding: 10px 0;
+    text-decoration: underline; 
+    text-underline-offset: 10px;
+}
+
+/* Stat Blocks Common Styles */
+.debtor-stats-count, .debtor-stats-amount {
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.debtor-stats-count .col, .debtor-stats-amount .col {
+    padding: 10px;
+}
+
+/* ##Background for First Row  */
+/* ##Background for First Row  */
+/* .total-debtor-block {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("/static/images/dashboard/total_debtor.jpg");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat;  
+}*/
+/* 
+.active-debtor-block {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("/static/images/dashboard/total_active.jpg");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+}
+
+.recovered-debtor-block {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("/static/images/dashboard/total_recover.jpg");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+} 
+
+.deleted-debtors {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("/static/images/dashboard/total_delete.jpg");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+} 
+
+/* ##Background Image for Second Row */
+/* .total-debts {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("/static/images/dashboard/total_debt.jpg");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat;        
+}
+
+.recovered-debts {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("/static/images/dashboard/debt_recovery.jpg");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+}
+
+.remain-debts {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url("/static/images/dashboard/debt_remain.jpg");
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
+} */
+
+
+.total-debtor-block, 
+.active-debtor-block, 
+.recovered-debtor-block, 
+.recovery-rate-block {
+    padding: 20px;
+    border-radius: 5px;
+    min-height: 180px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.total-debtor-block:hover, 
+.active-debtor-block:hover, 
+.recovered-debtor-block:hover, 
+.recovery-rate-block:hover {
+    transform: translateY(-5px);
+}
+
+/* Icon Styles */
+.icon {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/* Text Styles */
+.total-debtor-text, 
+.active-debtor-text, 
+.recovered-debtor-text, 
+.recovery-debtor-text {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.debtor-counts, 
+.active-counts, 
+.recovered-counts, 
+.recovery-rate {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* Charts Wrapper */
+.charts-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.total-debtors-count, 
+.different-debtors-count {
+    flex: 1;
+    min-width: 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.total-debtors-title, 
+.different-debtors-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* #Image Size css */
+.no-debtor-image{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;           /* hide any overflow when cropping */
+  /* border + shadow */
+  border: 10px solid #e5e7eb;  /* pick any color you like */
+  border-radius: 12px;         /* optional, remove if you want square corners */
+  box-shadow: 0 12px 24px rgba(0,0,0,.18);
+
+  /* keep total width including border at 600px */
+  box-sizing: border-box;
+  background: #fff;
+}
+
+
+.no-debtor-image img{
+  width: 40%;
+  height: 20%; 
+  object-fit: cover;          /* fill box without squishing */
+  display: block;
+  opacity:0.5;
+}
+
+.debtors-list-title{
+ font-size: 26px;
+  font-weight: 700;
+  color: #3b5977;
+  padding: 10px 0;
+  text-decoration: underline; 
+  text-underline-offset: 10px;
+}
+
+.no-debtor-image img:hover{
+  opacity:1;
+  transform:scale(1.05);
+  transition: transform .25s ease;
+  
+}
+
+/* #css on talbe  */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-size: 0.87rem;
+  text-align: left;
+
+  /* box shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* X, Y, blur, color */
+  border-radius: 8px;       /* optional rounded corners */
+  overflow: hidden;         /* makes the shadow look clean */
+}
+
+td{
+  font-size:0.8rem;
+  /* padding:3px 3px; */
+  text-align: start;
+}
+
+.total-debtor-lists{
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); X, Y, blur, color */
+  box-shadow: 0 0 10px rgba(0, 150, 255, 0.3);
+  border:2px solid grey;
+  border-radius: 8px;       /* optional rounded corners */
+  overflow: hidden;         /* makes the shadow look clean */
+  padding-left:1rem;
+  padding-right:1rem;
+  opacity:0.6;
+  font-size:0.7rem;
+  color:rgb(48, 47, 47);
+}
+
+.total-debtor-lists:hover{
+  border:2px solid red;
+  opacity:1;
+  padding-left:0.4rem;
+  padding-right:0.4rem;
+}
+
+/* Style the table row on hover */
+.debtors-debt-amount tr,
+.total-debtor-lists tr{
+  cursor: pointer; /* Change cursor to pointer to indicate clickability */
+  /* transition: background-color 0.3s ease;  */
+}
+
+/* On hover, change the background color of the row */
+.debtors-debt-amount tr:hover,
+.total-debtor-lists tr:hover {
+  color:red;
+  background-color: red; /* Light gray background on hover */
+  font-size:1rem;
+}
+
+
+
+/* Mobile: show only Sn, Name, Remaining Debt, Status */
+@media (max-width: 576px) {
+  /* tighten spacing */
+  .total-debtor-lists table,
+  .debtors-debt-amount table {
+    font-size: 0.7rem;
+  }
+  .total-debtor-lists table th,
+  .total-debtor-lists table td {
+    padding: 6px 6px;
+  }
+
+  /* HIDE unwanted columns (2,4,5,7,8) */
+  .total-debtor-lists table thead tr th:nth-child(2),
+  .total-debtor-lists table thead tr th:nth-child(4),
+  .total-debtor-lists table thead tr th:nth-child(5),
+  .total-debtor-lists table thead tr th:nth-child(7),
+  .total-debtor-lists table thead tr th:nth-child(8),
+  .total-debtor-lists table tbody tr td:nth-child(2),
+  .total-debtor-lists table tbody tr td:nth-child(4),
+  .total-debtor-lists table tbody tr td:nth-child(5),
+  .total-debtor-lists table tbody tr td:nth-child(7),
+  .total-debtor-lists table tbody tr td:nth-child(8) {
+    display: none !important;
+  }
+
+  /* Optional polish */
+  /* Prevent wrapping weirdness on names */
+  .total-debtor-lists table tbody tr td:nth-child(3) {
+    max-width: 220px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Align Remaining Debt numbers nicely (column 6) */
+  .total-debtor-lists table thead tr th:nth-child(6),
+  .total-debtor-lists table tbody tr td:nth-child(6) {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  /* Center or emphasize Status (column 9) */
+  .total-debtor-lists table thead tr th:nth-child(9),
+  .total-debtor-lists table tbody tr td:nth-child(9) {
+    text-align: center;
+    font-weight: 600;
+  }
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .debtor-stats-count .row, 
+    .debtor-stats-amount .row {
+        flex-direction: column;
+    }
+    
+    .debtor-stats-count .col, 
+    .debtor-stats-amount .col {
+        margin-bottom: 15px;
+    }
+    
+    .charts-wrapper {
+        flex-direction: column;
+    }
+}
+
+/* Animation for stat blocks */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.total-debtor-block, 
+.active-debtor-block, 
+.recovered-debtor-block, 
+.recovery-rate-block {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.total-debtor-block { animation-delay: 0.1s; }
+.active-debtor-block { animation-delay: 0.2s; }
+.recovered-debtor-block { animation-delay: 0.3s; }
+.recovery-rate-block { animation-delay: 0.4s; }
+
+/* Chart canvas styling */
+canvas {
+    width: 70% !important;
+    height: 250px !important;
+}

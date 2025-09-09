@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  recycle-recover
+{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/debtor_list.css' %}" />
+{% endblock %}
+{% block body %}
+ 
+  <div class="debtorlist-container">
+    <div class="debtorlist-section">
+      {% if debtors %}
+        <div class="debtors-list">
+          <h3 class="text-start text-primary text-decoration-underline fw-bold ">Deleted Debtors</h3>
+          <div class="debtor-list-btn text-end">
+            <a class="btn btn-success" href="{% url 'debtor_list' %}">Debtor List</a>
+          </div>
+          <table class="table table-bordered border-primary">
+            <thead>
+              <tr>
+                <th>Sn</th>
+                <th>Debtor Id</th>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Address</th>
+                <th>Initial Debt</th>
+                <th>Debt Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for debtor in debtors %}
+                <tr>
+                  <td data-label="Sn">{{ forloop.counter }}</td>
+                  <td data-label="Debtor Id">{{ debtor.debtor_id }}</td>
+                  <td data-label="Name">{{ debtor.name }}</td>
+                  <td data-label="Mobile">{{ debtor.mobile }}</td>
+                  <td data-label="Mobile">{{ debtor.address }}</td>
+                  <td data-label="Mobile">{{ debtor.initial_debt }}</td>
+                  <td data-label="Mobile">{{ debtor.debt_date }}</td>
+                  <td data-label="Mobile">Recovered</td>
+                  <td class="text-center">
+                    <a href="{% url 'restore_debtor' debtor.id %}">
+                    <i class="fa-solid fa-trash-can-arrow-up text-success"></i></a> |
+                    <a href="{% url 'hard_delete_debtor' debtor.id %}" onclick = "return confirm('Are You Sure to Delete this Debtor?')">
+                    <i class="fa-solid fa-trash text-danger"></i>
+                  </td>  
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      {% else %}
+        <div class="debtors text-center">No Any Debtors to Restore.</div>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

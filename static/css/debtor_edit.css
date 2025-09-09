@@ -1,0 +1,224 @@
+/* Container styles */
+.debtor-edit-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.edit-form-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #495057;
+    text-decoration: underline;
+    margin-bottom: 30px;
+}
+
+/* Alert styling for non-field errors */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert p {
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Form styling */
+form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+/* Form field styling */
+form p {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+form p label {
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #333;
+    text-align: left;
+    font-size: 14px;
+}
+
+form p input,
+form p select,
+form p textarea {
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    background-color: #fff;
+}
+
+form p input:focus,
+form p select:focus,
+form p textarea:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.25);
+}
+
+/* Textarea specific styling */
+form p textarea {
+    resize: vertical;
+    min-height: 90px;
+    font-family: inherit;
+}
+
+/* File input styling */
+form p input[type="file"] {
+    padding: 8px;
+    background-color: #f8f9fa;
+    border-style: dashed;
+}
+
+/* Checkbox and radio styling */
+form p input[type="checkbox"],
+form p input[type="radio"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+/* Full width fields (like textarea or special fields) */
+form p.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Button styling */
+button[type="submit"] {
+    grid-column: 1 / -1;
+    padding: 14px 35px;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    form {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .debtor-edit-container {
+        padding: 15px;
+        margin: 10px;
+    }
+    
+    .edit-form-title {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .debtor-edit-container {
+        padding: 10px;
+    }
+    
+    .edit-form-title {
+        font-size: 20px;
+        margin-bottom: 20px;
+    }
+    
+    button[type="submit"] {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+}
+
+/* Error styling */
+.errorlist {
+    color: #dc3545;
+    font-size: 12px;
+    margin-top: 6px;
+    list-style: none;
+    padding: 0;
+    background-color: #f8d7da;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.errorlist li {
+    margin-bottom: 3px;
+    font-weight: 500;
+}
+
+/* Help text styling */
+.helptext {
+    font-size: 12px;
+    color: #6c757d;
+    margin-top: 4px;
+    font-style: italic;
+}
+
+/* Required field indicator */
+.required label::after {
+    content: " *";
+    color: #dc3545;
+    font-weight: bold;
+}
+
+/* Success state for valid fields */
+form p input:valid,
+form p select:valid,
+form p textarea:valid {
+    border-color: #28a745;
+}
+
+/* Hover effects for input fields */
+form p input:hover,
+form p select:hover,
+form p textarea:hover {
+    border-color: #adb5bd;
+}
+
+/* Loading state for submit button */
+button[type="submit"]:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Focus within form styling */
+form p:focus-within label {
+    color: #28a745;
+    font-weight: 600;
+}

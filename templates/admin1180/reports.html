@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Reports - Admin Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .report-card {
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .report-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .report-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            border-color: #667eea;
+        }
+        
+        .report-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        
+        .report-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        .report-card p {
+            color: #666;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 8px 20px rgba(149, 165, 166, 0.4);
+        }
+        
+        .special-reports {
+            margin-top: 50px;
+            padding-top: 40px;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .debtor-select-form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid #e9ecef;
+            margin-top: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        .stats-section {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .loading.show {
+            display: block;
+        }
+        
+        .spinner {
+            border: 3px solid #f3f3f4;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 768px) {
+            .reports-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Report Generation Center</h1>
+            <p>Generate comprehensive Excel reports for users, debtors, and transactions</p>
+        </div>
+        
+        <div class="content">
+            <!-- Statistics Section -->
+            <div class="stats-section">
+                <h2 class="section-title">System Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-number">{{ total_users|default:"--" }}</span>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ total_debtors|default:"--" }}</span>
+                        <div class="stat-label">Total Debtors</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">{{ total_transactions|default:"--" }}</span>
+                        <div class="stat-label">Total Transactions</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">${{ total_debt|default:"--" }}</span>
+                        <div class="stat-label">Total Outstanding Debt</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Reports -->
+            <div class="reports-grid">
+                <div class="report-card">
+                    <div class="report-icon">👥</div>
+                    <h3>All Users Report</h3>
+                    <p>Export comprehensive data for all system users including their profile information, activity status, and debtor counts.</p>
+                    <a href="{% url 'export_all_users_xlsx' %}" class="btn" onclick="showLoading(this)">
+                        Download Users Report
+                    </a>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">💰</div>
+                    <h3>All Debtors Report</h3>
+                    <p>Complete list of all debtors with their debt details, contact information, and current status.</p>
+                    <a href="{% url 'export_all_debtors_xlsx' %}" class="btn" onclick="showLoading(this)">
+                        Download Debtors Report
+                    </a>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">📈</div>
+                    <h3>Summary Report</h3>
+                    <p>Executive summary with user and debtor overviews in a multi-sheet Excel workbook for quick insights.</p>
+                    <a href="{% url 'export_summary_report_xlsx' %}" class="btn" onclick="showLoading(this)">
+                        Download Summary Report
+                    </a>
+                </div>
+
+                <div class="report-card">
+                    <div class="report-icon">🔄</div>
+                    <h3>All Transactions Report</h3>
+                    <p>Detailed transaction history for all debtors including payment methods, amounts, and dates.</p>
+                    <a href="{% url 'export_all_transactions_xlsx' %}" class="btn" onclick="showLoading(this)">
+                        Download Transactions Report
+                    </a>
+                </div>
+            </div>
+
+            <!-- Special Reports Section -->
+            <div class="special-reports">
+                <h2 class="section-title">Specialized Reports</h2>
+                
+                <div class="report-card">
+                    <div class="report-icon">🎯</div>
+                    <h3>Individual Debtor Transactions</h3>
+                    <p>Generate a detailed transaction report for a specific debtor with complete payment history.</p>
+                    
+                    <form action="{% url 'export_debtor_transactions_xlsx' %}" method="get" class="debtor-select-form">
+                        <div class="form-group">
+                            <label for="debtor_id" class="form-label">Select Debtor:</label>
+                            <select name="debtor_id" id="debtor_id" class="form-control" required>
+                                <option value="">Choose a debtor...</option>
+                                {% for debtor in debtors %}
+                                <option value="{{ debtor.id }}">
+                                    {{ debtor.name }} - ID: {{ debtor.debtor_id }} 
+                                    (Debt: ${{ debtor.total_debt|floatformat:2 }})
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <button type="submit" class="btn" onclick="showLoading(this)">
+                            Generate Debtor Report
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Loading Indicator -->
+            <div class="loading" id="loadingIndicator">
+                <div class="spinner"></div>
+                <p>Generating your report... This may take a few moments.</p>
+            </div>
+
+            <!-- Navigation -->
+            <div style="text-align: center; margin-top: 40px; padding-top: 30px; border-top: 1px solid #e9ecef;">
+                <a href="{% url 'admin:index' %}" class="btn btn-secondary">
+                    ← Back to Admin Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showLoading(element) {
+            // Show loading indicator
+            document.getElementById('loadingIndicator').classList.add('show');
+            
+            // Disable the clicked button
+            element.style.opacity = '0.7';
+            element.style.pointerEvents = 'none';
+            
+            // Re-enable after 10 seconds (in case of issues)
+            setTimeout(function() {
+                document.getElementById('loadingIndicator').classList.remove('show');
+                element.style.opacity = '1';
+                element.style.pointerEvents = 'auto';
+            }, 10000);
+        }
+
+        // Enhanced debtor search functionality
+        document.getElementById('debtor_id').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const options = this.querySelectorAll('option');
+            
+            options.forEach(option => {
+                if (option.value === '') return; // Skip placeholder option
+                
+                const text = option.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    option.style.display = '';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        });
+
+        // Auto-refresh stats every 30 seconds (if needed)
+        function refreshStats() {
+            // Implementation would depend on your backend API
+            console.log('Stats refresh would happen here');
+        }
+
+        // Add form validation
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const select = this.querySelector('select[required]');
+                if (select && !select.value) {
+                    e.preventDefault();
+                    alert('Please select a debtor before generating the report.');
+                    return false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

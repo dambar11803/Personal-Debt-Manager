@@ -1,0 +1,12 @@
+.report-container{
+    max-width:800px;
+}
+
+.report-title{
+    font-size:1.2rem;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    font-weight:500;
+    margin-bottom:10px;
+    color:red;
+}

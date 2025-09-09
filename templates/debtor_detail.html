@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/debtor_detail.css' %}" />
+{% endblock %}
+{% block body %}
+  <div class="debtordetail-container container">
+    <h4 class="text-primary py-4">Debtor Detail</h4>
+    <div class="debtor-btn text-end">
+      <a class="btn btn-primary text-end mb-3" href="{% url 'debtor_list' %}">Debtor List</a>
+    </div>
+
+    <!-- Debtor Details -->
+    <div class="debtor-detail">
+      <table class="table table-bordered">
+        <tr>
+          <th>Name</th>
+          <td>{{ debtor.name }}</td>
+          <th>Initial Debt</th>
+          <td>{{ debtor.initial_debt }}</td>
+        </tr>
+        <tr>
+          <th>Address</th>
+          <td>{{ debtor.address }}</td>
+          <th>Payment Method</th>
+          <td>{{ debtor.payment_method }}</td>
+        </tr>
+        <tr>
+          <th>Mobile</th>
+          <td>{{ debtor.mobile }}</td>
+          <th>Debt Date</th>
+          <td>{{ debtor.debt_date }}</td>
+        </tr>
+        <tr>
+          <th>Debtor ID</th>
+          <td>{{ debtor.debtor_id }}</td>
+          <th>Current Debt</th>
+          <td>{{ debtor.current_debt }}</td>
+        </tr>
+        <tr>
+          <th>Debt Purpose</th>
+          <td>{{ debtor.debt_purpose }}</td>
+          <th>Debtor Status</th>
+          <td>{{ debtor.debtor_status }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <h4 class="text-sucess text-decoration-underline py-5">Debtor Statement</h4>
+    <table class="transaction-table table table-bordered table-bordered-primary">
+      <thead>
+        <tr>
+          <th scope="col">Sn</th>
+          <th scope="col">Date</th>
+          <th scope="col">Time</th>
+          <th scope="col">Debit</th>
+          <th scope="col">Credit</th>
+          <th scope="col">Desc1</th>
+          <th scope="col">TranId</th>
+          <th scope="col">Medium</th>
+          <th scope="col">Doc</th>
+          <th scope="col">Current Debt</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for transaction in transactions %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ transaction.tran_date|date:'Y-m-d' }}</td>
+            <td>{{ transaction.tran_date|date:'h:i:A' }}</td>
+            <td>{{ transaction.debit_amount|floatformat:2 }}</td>
+            <td>{{ transaction.credit_amount|floatformat:2 }}</td>
+            <td>
+              {% if forloop.first %}
+                {{ debtor.debt_purpose }}
+              {% else %}
+                {{ transaction.tran_desc }}
+              {% endif %}
+            </td>
+            <td>
+              {% if forloop.first %}
+                -------
+              {% else %}
+                {{ transaction.tran_id }}
+              {% endif %}
+            </td>
+            <td>
+              {% if forloop.first %}
+                {{ debtor.payment_method }}
+              {% else %}
+                {{ transaction.tran_medium }}
+              {% endif %}
+            </td>
+            <td>
+              {% if forloop.first %}
+                {% if debtor.debt_voucher %}
+                  {% if debtor.is_debt_voucher_pdf %}
+                    <a href="{{ debtor.debt_voucher.url }}" target="_blank" title="View PDF"><i class="fa-solid fa-file-pdf text-danger px-2"></i></a>
+                  {% else %}
+                    <a href="{{ debtor.debt_voucher.url }}" target="_blank" title="View Image"><img src="{{ debtor.debt_voucher.url }}" alt="debt-voucher" style="width: 20px; height: 20px;" /></a>
+                  {% endif %}
+                {% else %}
+                  <span class="text-muted">No Voucher</span>
+                {% endif %}
+              {% else %}
+                {% if transaction.tran_voucher %}
+                  {% if transaction.is_tran_voucher_pdf %}
+                    <a href="{{ transaction.tran_voucher.url }}" target="_blank" title="View PDF"><i class="fa-solid fa-file-pdf text-danger px-2"></i></a>
+                  {% else %}
+                    <a href="{{ transaction.tran_voucher.url }}" target="_blank" title="View Image"><img src="{{ transaction.tran_voucher.url }}" alt="tran-voucher" style="width: 20px; height: 20px;" /></a>
+                  {% endif %}
+                {% else %}
+                  <span class="text-muted">No Voucher</span>
+                {% endif %}
+              {% endif %}
+            </td>
+            <td>{{ transaction.current_debt|floatformat:2 }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4" style="text-align: center;">
+              <em>No transactions available for this debtor.</em>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

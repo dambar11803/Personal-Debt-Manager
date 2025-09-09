@@ -1,0 +1,94 @@
+/* ===== Container Styling ===== */
+.transaction-search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 80vh; */
+  /* background: #f9f9f9; */
+  padding: 2rem;
+}
+
+/* ===== Form Section ===== */
+.form-section {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.form-section h4 {
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  font-size:1.3rem;
+}
+
+/* ===== Form Groups ===== */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.5rem;
+  font-size: 0.9rem;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+select option {
+  font-size: 0.9rem; 
+}
+
+.form-group select:focus {
+  outline: none;
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* ===== Actions ===== */
+.form-actions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.form-actions button {
+  background: #0d6efd;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.form-actions button:hover {
+  background: #0b5ed7;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 576px) {
+  .form-section {
+    padding: 1.5rem;
+  }
+
+  .form-section h4 {
+    font-size: 1.1rem;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/add_transaction.css' %}"> {% endblock css %}
+{% block body %}
+ <div class="addtran-container">       
+    <div class="addtran-form">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h4>Add Transaction</h4>
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% if field.errors %}
+                    <div class="errorlist">{{ field.errors }}</div>
+                {% endif %}
+            {% endfor %}
+
+            <button type="submit">Add Transaction</button>
+            <a href="{% url 'debtor_list' %}" class="btn-cancel">Cancel</a>
+        </form>
+    </div>
+    
+ </div>
+
+{% endblock %}
