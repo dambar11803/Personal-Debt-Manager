@@ -18,10 +18,10 @@
       <hr color="grey" />
 
       <!-- First block -->
-      <div class="debtor-stats-count">
+      <div class="debtor-stats-count py-5">
         <div class="row">
           <div class="col">
-            <div class="total-debtor-block bg-primary">
+            <div class="total-debtor-block">
               <div class="icon text-start">
                 <i class="fa-solid fa-people-group text-white"></i>
               </div>
@@ -30,7 +30,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="active-debtor-block bg-success">
+            <div class="active-debtor-block">
               <div class="icon text-start">
                 <i class="fa-solid fa-person text-white text-start"></i>
               </div>
@@ -39,7 +39,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="recovered-debtor-block bg-secondary">
+            <div class="recovered-debtor-block">
               <div class="icon text-start">
                 <i class="fa-solid fa-person-arrow-up-from-line text-white"></i>
               </div>
@@ -60,10 +60,10 @@
       </div>
 
       <!-- Second block -->
-      <div class="debtor-stats-amount">
+      <div class="debtor-stats-amount py-5">
         <div class="row">
           <div class="col">
-            <div class="total-debtor-block total-debts bg-primary">
+            <div class="total-debtor-block total-debts py-5">
               <div class="icon text-start">
                 <i class="fa-solid fa-money-bill-1 text-white"></i>
               </div>
@@ -72,7 +72,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="active-debtor-block recovered-debts bg-success">
+            <div class="active-debtor-block recovered-debts py-5">
               <div class="icon text-start">
                 <i class="fa-solid fa-money-bill-trend-up text-white"></i>
               </div>
@@ -81,7 +81,7 @@
             </div>
           </div>
           <div class="col">
-            <div class="recovered-debtor-block remain-debts bg-secondary">
+            <div class="recovered-debtor-block remain-debts py-5">
               <div class="icon text-start">
                 <i class="fa-solid fa-money-check-dollar text-white"></i>
               </div>
@@ -100,8 +100,8 @@
           <div class="col">
             <div class="debtors-list-title pt-5">Debtors List</div>
              <hr color="grey">
-            <div class="table-responsive total-debtor-lists pb-5">
-              <table class="table table-bordered border-success">
+            <div class="table-responsive total-debtor-lists py-5">
+              <table class="table table-bordered border-success py-5">
                 <thead class="table-success text-start">
                   <tr>
                     <th>Sn</th>
@@ -170,6 +170,7 @@
         </div>
       {% else %}
         <div class="debtors-list-title pt-5">No Debtor Details</div>
+         <hr color="grey">
         <div class="no-debtor-image py-5 d-flex justify-content-center">
           <img src="{% static 'images/no_debtor1.png' %}" class="img-fluid mx-auto" alt="..." />
         </div>
@@ -181,8 +182,8 @@
         <div class="row">
           <div class="debtors-list-title pt-5">Debt Amount Details</div>
            <hr color="grey">
-          <div class="col debtors-debt-amount">
-            <div class="table-responsive total-debtor-lists pb-5">
+          <div class="col debtors-debt-amount py-5">
+            <div class="table-responsive total-debtor-lists py-5">
               <table class="table table-bordered border-primary">
                 <thead class="table-primary">
                   <tr>
@@ -212,6 +213,7 @@
         </div>
       {% else %}
         <div class="debtors-list-title py-5">No Debt Amount Details</div>
+        <hr color="grey">
         <div class="no-debtor-image py-5 d-flex justify-content-center">
           <img src="{% static 'images/no_debt_amount1.png' %}" class="img-fluid mx-auto" alt="..." />
         </div>

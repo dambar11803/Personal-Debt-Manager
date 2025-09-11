@@ -10,9 +10,8 @@
 
 /* Title styling */
 .edit-form-title {
-    font-size: 28px;
+    font-size: 1.2rem;
     font-weight: 600;
-    color: #495057;
     text-decoration: underline;
     margin-bottom: 30px;
 }

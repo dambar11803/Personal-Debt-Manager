@@ -12,8 +12,8 @@
   color: #007bff;
   font-weight: 600;
   margin-bottom: 20px;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 8px;
+  border-bottom: 3px solid #007bff;
+  padding-bottom: 10px;
 }
 
 .text-sucess {
@@ -22,14 +22,14 @@
 
 /* Button Styles */
 .debtor-btn {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .debtor-btn .btn {
-  padding: 10px 20px;
-  font-weight: 500;
+  padding: 5px 10px;
   border-radius: 5px;
   transition: all 0.3s ease;
+  font-size: 0.8rem;
 }
 
 .debtor-btn .btn:hover {
@@ -67,10 +67,10 @@
   background-color: #f8f9fa;
 }
 
-.debtor-detail .table tr:hover {
+/* .debtor-detail .table tr:hover {
   background-color: #e3f2fd;
   transition: background-color 0.3s ease;
-}
+} */
 
 /* Transaction Table Styles */
 .transaction-table {
@@ -107,10 +107,10 @@
   background-color: #f8f9fa;
 }
 
-.transaction-table tbody tr:hover {
+/* .transaction-table tbody tr:hover {
   background-color: #e3f2fd;
   transition: background-color 0.3s ease;
-}
+} */
 
 /* Special styling for first row (initial debt entry) */
 .transaction-table tbody tr:first-child {
@@ -118,9 +118,6 @@
   font-weight: 600;
 }
 
-.transaction-table tbody tr:first-child:hover {
-  background-color: #ffeaa7;
-}
 
 /* Amount columns styling */
 .transaction-table tbody td:nth-child(4), /* Debit */

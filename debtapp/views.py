@@ -1265,3 +1265,7 @@ def export_debtor_transactions_xlsx(request):
     response = _create_excel_response(f"transactions_{safe_name}")
     workbook.save(response)
     return response
+
+##Terms & Conditon
+def terms_condition(request):
+    return render(request, 'terms_condition.html')

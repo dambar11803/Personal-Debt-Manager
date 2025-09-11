@@ -1,0 +1,333 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Terms&Condition {% endblock %}
+{% load static %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/terms_condition.css' %}" />
+{% endblock %}
+{% block body %}
+  <div class="container">
+    <div class="header">
+      <h1>Personal Debt Manager</h1>
+      <p>Terms of Service & Privacy Policy</p>
+      <div style="margin-top: 1rem;">
+        <button class="print-btn btn btn-success" 
+        onclick="window.location.href='{% static 'pdf/terms_condition.pdf' %}'">
+    Download PDF
+</button>
+      </div>
+    </div>
+
+    <div class="tab-container">
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'terms')">Terms & Conditions</button>
+        <button class="tab-button" onclick="openTab(event, 'privacy')">Privacy Policy</button>
+        <button class="tab-button" onclick="openTab(event, 'acceptable-use')">Acceptable Use</button>
+      </div>
+
+      <!-- Terms & Conditions Tab -->
+      <div id="terms" class="tab-content active">
+        <div class="toc">
+          <h3>Table of Contents</h3>
+          <ol>
+            <li>
+              <a href="#acceptance">Acceptance of Terms</a>
+            </li>
+            <li>
+              <a href="#description">Description of Service</a>
+            </li>
+            <li>
+              <a href="#user-responsibilities">User Responsibilities</a>
+            </li>
+            <li>
+              <a href="#prohibited-uses">Prohibited Uses</a>
+            </li>
+            <li>
+              <a href="#account-limitations">Account Limitations</a>
+            </li>
+            <li>
+              <a href="#intellectual-property">Intellectual Property</a>
+            </li>
+            <li>
+              <a href="#disclaimers">Disclaimers</a>
+            </li>
+            <li>
+              <a href="#liability">Limitation of Liability</a>
+            </li>
+            <li>
+              <a href="#indemnification">Indemnification</a>
+            </li>
+            <li>
+              <a href="#termination">Termination</a>
+            </li>
+            <li>
+              <a href="#modifications">Modifications</a>
+            </li>
+            <li>
+              <a href="#governing-law">Governing Law</a>
+            </li>
+          </ol>
+        </div>
+
+        <div class="section" id="acceptance">
+          <h2>1. Acceptance of Terms</h2>
+          <p>By accessing and using the Personal Debt Manager application ("the Service", "the App"), you accept and agree to be bound by the terms and provisions of this agreement. If you do not agree to abide by the above, please do not use this service.</p>
+
+          <div class="important-box">
+            <strong>Important:</strong> These terms constitute a legally binding agreement between you and Personal Debt Manager. Please read them carefully before using our service.
+          </div>
+        </div>
+
+        <div class="section" id="description">
+          <h2>2. Description of Service</h2>
+          <p>Personal Debt Manager is a web-based application designed to help users track and manage personal loans and debts. The service allows users to:</p>
+          <ul>
+            <li>Record debtor information and contact details</li>
+            <li>Track debit and credit transactions with automated calculations</li>
+            <li>Generate comprehensive reports and analytics</li>
+            <li>Export data for personal records and backup</li>
+            <li>Manage debt recovery processes and payment tracking</li>
+          </ul>
+
+          <div class="highlight-box">
+            <strong>Note:</strong> This application is a record-keeping tool only and does not constitute financial, legal, or investment advice.
+          </div>
+        </div>
+
+        <div class="section" id="user-responsibilities">
+          <h2>3. User Responsibilities</h2>
+
+          <h3>3.1 Account Security</h3>
+          <ul>
+            <li>You are responsible for maintaining the confidentiality of your account credentials</li>
+            <li>You must notify us immediately of any unauthorized use of your account</li>
+            <li>You are fully responsible for all activities that occur under your account</li>
+            <li>Use strong passwords and change them regularly</li>
+          </ul>
+
+          <h3>3.2 Data Accuracy</h3>
+          <ul>
+            <li>You are responsible for the accuracy of all information entered into the system</li>
+            <li>You must ensure all debtor information and transaction records are correct</li>
+            <li>You acknowledge that the system is a tool for record-keeping and does not constitute legal advice</li>
+          </ul>
+
+          <h3>3.3 Lawful Use</h3>
+          <ul>
+            <li>You agree to use the service only for lawful purposes</li>
+            <li>You will not use the service to track illegal transactions or money laundering</li>
+            <li>All debt records must represent legitimate financial transactions</li>
+            <li>You must comply with all applicable local, state, and federal laws</li>
+          </ul>
+
+          <div class="warning-box">
+            <strong>Warning:</strong> Misuse of this service for illegal activities may result in immediate account termination and legal action.
+          </div>
+        </div>
+
+        <div class="section" id="prohibited-uses">
+          <h2>4. Prohibited Uses</h2>
+          <p>You may not use the Personal Debt Manager for:</p>
+          <ul>
+            <li>Illegal money lending or loan sharking activities</li>
+            <li>Recording transactions related to illegal activities</li>
+            <li>Harassment or threatening behavior toward debtors</li>
+            <li>Collecting excessive interest rates prohibited by law</li>
+            <li>Sharing account access with unauthorized individuals</li>
+            <li>Attempting to access other users' data</li>
+            <li>Uploading malicious files or content</li>
+            <li>Violating any applicable laws or regulations</li>
+          </ul>
+        </div>
+
+        <div class="section" id="account-limitations">
+          <h2>5. Account Limitations</h2>
+
+          <h3>5.1 Debtor Limits</h3>
+          <ul>
+            <li>Free accounts are limited to 50 active debtors maximum</li>
+            <li>Additional limits may apply based on account type</li>
+            <li>Limits are in place to ensure system performance and data integrity</li>
+          </ul>
+
+          <h3>5.2 Data Retention</h3>
+          <ul>
+            <li>Soft-deleted debtors are retained for 20 days before permanent deletion</li>
+            <li>Transaction records are maintained indefinitely unless explicitly deleted</li>
+            <li>Account data may be retained according to legal requirements</li>
+          </ul>
+        </div>
+
+        <!-- Continue with remaining sections... -->
+        <div class="section" id="intellectual-property">
+          <h2>6. Intellectual Property</h2>
+          <p>The Personal Debt Manager application, including all software, design, and documentation, is owned by DambarChamling. You are granted a limited, non-exclusive license to use the service.</p>
+        </div>
+
+        <!-- Add remaining sections as needed -->
+      </div>
+
+      <!-- Privacy Policy Tab -->
+      <div id="privacy" class="tab-content">
+        <div class="toc">
+          <h3>Privacy Policy Contents</h3>
+          <ol>
+            <li>
+              <a href="#info-collect">Information We Collect</a>
+            </li>
+            <li>
+              <a href="#info-use">How We Use Your Information</a>
+            </li>
+            <li>
+              <a href="#info-sharing">Information Sharing</a>
+            </li>
+            <li>
+              <a href="#data-security">Data Security</a>
+            </li>
+            <li>
+              <a href="#your-rights">Your Rights</a>
+            </li>
+            <li>
+              <a href="#data-retention">Data Retention</a>
+            </li>
+            <li>
+              <a href="#cookies">Cookies and Tracking</a>
+            </li>
+            <li>
+              <a href="#children">Children's Privacy</a>
+            </li>
+            <li>
+              <a href="#international">International Transfers</a>
+            </li>
+            <li>
+              <a href="#policy-changes">Policy Changes</a>
+            </li>
+          </ol>
+        </div>
+
+        <div class="section" id="info-collect">
+          <h2>1. Information We Collect</h2>
+
+          <h3>1.1 Account Information</h3>
+          <ul>
+            <li>Username and password</li>
+            <li>Email address</li>
+            <li>Full name</li>
+            <li>Mobile phone number</li>
+            <li>Physical address</li>
+            <li>Profile picture (optional)</li>
+          </ul>
+
+          <h3>1.2 Debtor Information</h3>
+          <ul>
+            <li>Debtor names and contact information</li>
+            <li>Transaction records and amounts</li>
+            <li>Purpose and description of debts</li>
+            <li>Supporting documents and vouchers</li>
+            <li>Payment methods and reference numbers</li>
+          </ul>
+
+          <div class="highlight-box">
+            <strong>Data Minimization:</strong> We only collect information that is necessary to provide our debt management services.
+          </div>
+        </div>
+
+        <!-- Add more privacy policy sections -->
+      </div>
+
+      <!-- Acceptable Use Policy Tab -->
+      <div id="acceptable-use" class="tab-content">
+        <div class="section">
+          <h2>Acceptable Use Policy</h2>
+
+          <h3>1. General Principles</h3>
+          <h4>1.1 Lawful Use</h4>
+          <ul>
+            <li>Use the service only for legitimate debt tracking</li>
+            <li>Ensure all recorded transactions represent real financial arrangements</li>
+            <li>Comply with all applicable laws regarding lending and debt collection</li>
+          </ul>
+
+          <h4>1.2 Ethical Considerations</h4>
+          <ul>
+            <li>Treat debtors with respect and fairness</li>
+            <li>Use reasonable collection practices</li>
+            <li>Maintain accurate and honest records</li>
+            <li>Respect privacy of debtor information</li>
+          </ul>
+
+          <div class="warning-box">
+            <strong>Ethical Lending:</strong> Always ensure your lending practices comply with local regulations and treat all parties with dignity and respect.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+  <button class="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks
+      tabcontent = document.getElementsByClassName('tab-content')
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove('active')
+      }
+      tablinks = document.getElementsByClassName('tab-button')
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove('active')
+      }
+      document.getElementById(tabName).classList.add('active')
+      evt.currentTarget.classList.add('active')
+    }
+    
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    }
+    
+    // Show/hide back to top button
+    window.onscroll = function () {
+      var backToTop = document.querySelector('.back-to-top')
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTop.classList.add('show')
+      } else {
+        backToTop.classList.remove('show')
+      }
+    }
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+        const target = document.querySelector(this.getAttribute('href'))
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          })
+        }
+      })
+    })
+    
+    function downloadPDF() {
+      // This would typically integrate with a PDF generation service
+      // For now, it triggers the browser's print dialog
+      window.print()
+    }
+    
+    // Auto-expand sections based on URL hash
+    window.addEventListener('load', function () {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash)
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth'
+          })
+        }
+      }
+    })
+  </script>
+{% endblock %}

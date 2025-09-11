@@ -6,10 +6,9 @@
 {% endblock css %}
 
 {% block body %}
-  <div class="debtor-edit-container my-5">
-    <div class="edit-form-title text-center pb-4">Edit Detail</div>
-    
 
+  <div class="debtor-edit-container my-5">
+    <div class="edit-form-title text-start text-success">Edit Detail</div>
     {# Display model-level (non-field) validation errors #}
     {% if form.non_field_errors %}
       <div class="alert alert-danger text-center">
@@ -22,7 +21,7 @@
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit">Update Debtor</button>
+      <button type="submit">Update</button>
     </form>
   </div>
 {% endblock %}
