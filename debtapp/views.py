@@ -1268,4 +1268,7 @@ def export_debtor_transactions_xlsx(request):
 
 ##Terms & Conditon
 def terms_condition(request):
-    return render(request, 'terms_condition.html')
+    return render(request, "terms_condition.html")
+
+def user_manual(request):
+    return render(request, "user_manual.html")

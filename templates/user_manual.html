@@ -1,0 +1,325 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  user_manual
+{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/user_manual.css' %}" />
+{% endblock %}
+
+{% block body %}
+  <div class="container um">
+    <!-- Hero -->
+    <div class="hero d-flex justify-content-between align-items-center gap-3">
+      <div>
+        <h1>Personal Debt Manager — User Manual</h1>
+        <div class="meta">Version 1.0 · Last updated: 2025-09-12</div>
+        
+      </div>
+      <div class="text-end">
+        <a href="{% static 'pdf/debt_user_manual.pdf' %}" target="_blank" class="btn btn-accent"><i class="fa-solid fa-file-pdf me-2"></i>Download PDF</a>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <!-- TOC -->
+      <nav class="toc" aria-label="Table of contents" id="toc">
+        <h6>Contents</h6>
+        <ul>
+          <li>
+            <a href="#introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#getting-started">Getting Started</a>
+          </li>
+          <li>
+            <a href="#user-dashboard">User Dashboard</a>
+          </li>
+          <li>
+            <a href="#managing-debtors">Managing Debtors</a>
+          </li>
+          <li>
+            <a href="#transaction-management">Transaction Management</a>
+          </li>
+          <li>
+            <a href="#reports-analytics">Reports & Analytics</a>
+          </li>
+          <li>
+            <a href="#data-export">Data Export</a>
+          </li>
+          <li>
+            <a href="#data-management">Data Management Features</a>
+          </li>
+          <li>
+            <a href="#security">Security Features</a>
+          </li>
+          <li>
+            <a href="#troubleshooting">Troubleshooting</a>
+          </li>
+          <li>
+            <a href="#best-practices">Best Practices</a>
+          </li>
+          <li>
+            <a href="#support">Contact & Support</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Content -->
+      <article class="content">
+        <section id="introduction">
+          <h2>Introduction</h2>
+          <p>The Personal Debt Manager is a Django-based web application designed to help you track and manage money lent to individuals. Record debtors, track debit/credit transactions, and generate comprehensive reports.</p>
+          <h3>Key Features</h3>
+          <ul>
+            <li>Debtor Management — add, edit, and track debtors</li>
+            <li>Transaction Tracking — record debit (lent) and credit (received)</li>
+            <li>Dashboard Analytics — visual portfolio overview</li>
+            <li>Excel Exports — detailed, styled spreadsheets</li>
+            <li>Admin Panel — multi-user oversight</li>
+            <li>Email Notifications — for debtor additions</li>
+            <li>Soft Delete — safe removal with recovery window</li>
+          </ul>
+        </section>
+
+        <section id="getting-started">
+          <h2>Getting Started</h2>
+          <h3>User Registration and Login</h3>
+          <p>
+            <strong>Registration:</strong> Fill in username, email, mobile, address; optionally upload a profile picture.
+          </p>
+          <p>
+            <strong>Login:</strong> Use your credentials; you’ll be redirected based on your role (Regular → User Dashboard, Admin → Admin Dashboard).
+          </p>
+          <h3>User Roles</h3>
+          <ul>
+            <li>
+              <strong>Regular User:</strong> Manage your debtors and transactions.
+            </li>
+            <li>
+              <strong>Admin User:</strong> Administrative functions and full oversight. <span class="muted">(Admin is for administrative purposes, not regular use.)</span>
+            </li>
+          </ul>
+        </section>
+
+        <section id="user-dashboard">
+          <h2>User Dashboard</h2>
+          <h3>Summary Statistics</h3>
+          <ul>
+            <li>Total debtors; Active; Recovered; Deleted (soft-deleted)</li>
+          </ul>
+          <h3>Financial Overview</h3>
+          <ul>
+            <li>Total lent; Current outstanding; Total recovered</li>
+          </ul>
+          <h3>Debtor Categories</h3>
+          <ul>
+            <li>
+              <strong>Active:</strong> has remaining debt
+            </li>
+            <li>
+              <strong>Recovered:</strong> fully repaid
+            </li>
+            <li>
+              <strong>Deleted:</strong> soft-deleted (recoverable window)
+            </li>
+          </ul>
+          <h3>Navigation</h3>
+          <ul>
+            <li>Add New Debtor · View All Debtors · Reports · Profile</li>
+          </ul>
+        </section>
+
+        <section id="managing-debtors">
+          <h2>Managing Debtors</h2>
+          <h3>Adding a New Debtor</h3>
+          <div class="callout">
+            <strong>Limit:</strong> Max 50 active debtors per user account.
+          </div>
+          <ul>
+            <li>Fill name, mobile, address, initial debt, date, purpose, payment method, voucher/cheque no., optional photo.</li>
+            <li>System creates opening debit transaction; optional email notification.</li>
+          </ul>
+          <h3>Editing Debtor Information</h3>
+          <ul>
+            <li>
+              <strong>With history:</strong> initial debt locked.
+            </li>
+            <li>
+              <strong>No history:</strong> all fields editable.
+            </li>
+          </ul>
+          <h3>Debtor Status Management</h3>
+          <ul>
+            <li>
+              Status auto-updates from transactions; <em>recovered → active</em> requires new debit.
+            </li>
+          </ul>
+        </section>
+
+        <section id="transaction-management">
+          <h2>Transaction Management</h2>
+          <h3>Types</h3>
+          <ul>
+            <li>
+              <strong>Debit (Lent):</strong> increases outstanding balance.
+            </li>
+            <li>
+              <strong>Credit (Received):</strong> decreases balance; cannot exceed current debt.
+            </li>
+          </ul>
+          <h3>Adding Transactions</h3>
+          <ol>
+            <li>Select debtor → choose type (Debit/Credit) → proceed.</li>
+            <li>Enter amount, medium, description; optionally upload voucher.</li>
+          </ol>
+          <h3>Validation & Effects</h3>
+          <ul>
+            <li>Positive amounts; credit ≤ current debt.</li>
+            <li>Balance and status update automatically; full history kept.</li>
+          </ul>
+          <h3>Transaction History</h3>
+          <ul>
+            <li>Chronological list with running balance, IDs, timestamps, medium, user.</li>
+          </ul>
+        </section>
+
+        <section id="reports-analytics">
+          <h2>Reports & Analytics</h2>
+          <h3>Dashboard Reports</h3>
+          <ul>
+            <li>Counts by status; financial summary; Excel export (timestamped filenames).</li>
+          </ul>
+          <h3>Individual Debtor Reports</h3>
+          <ul>
+            <li>Full history, balance, patterns; export per debtor.</li>
+          </ul>
+          <h3>Excel Export Options</h3>
+          <ul>
+            <li>Summary, all debtors list, individual transactions; styled headers, number formats, auto widths.</li>
+          </ul>
+        </section>
+
+        <section id="data-export">
+          <h2>Data Export</h2>
+          <h3>Format</h3>
+          <ul>
+            <li>Excel (.xlsx) with professional layout, calculations, multiple sheets if needed.</li>
+          </ul>
+          <h3>File Naming</h3>
+          <ul>
+            <li>
+              <code>[report-type]-[identifier]-[timestamp].xlsx</code> (e.g., <code>dashboard-summary-20241201-1430.xlsx</code>).
+            </li>
+          </ul>
+          <h3>Export Content</h3>
+          <ul>
+            <li>Summary totals, debtor info + balances, transaction timelines with methods and totals.</li>
+          </ul>
+        </section>
+
+        <section id="data-management">
+          <h2>Data Management Features</h2>
+          <h3>Soft Delete System</h3>
+          <ul>
+            <li>Moves to Recycle Bin; 20-day retention; restore within window.</li>
+            <li>Only recovered debtors (zero balance) can be deleted.</li>
+          </ul>
+          <h3>Recycle Bin</h3>
+          <ul>
+            <li>View/restore; automatic permanent deletion after 20 days.</li>
+          </ul>
+          <h3>Data Integrity</h3>
+          <ul>
+            <li>Amount validations; status from balances; unique IDs; user data isolation.</li>
+          </ul>
+        </section>
+
+        <section id="security">
+          <h2>Security Features</h2>
+          <ul>
+            <li>User authentication, sessions, strong passwords, role-based access.</li>
+            <li>User isolation, atomic transactions, secure uploads, admin oversight.</li>
+          </ul>
+        </section>
+
+        <section id="troubleshooting">
+          <h2>Troubleshooting</h2>
+          <ul>
+            <li>
+              <strong>Cannot Add Debtor:</strong> may hit 50-debtor limit.
+            </li>
+            <li>
+              <strong>Cannot Delete Debtor:</strong> only when recovered.
+            </li>
+            <li>
+              <strong>Credit Rejected:</strong> credit cannot exceed balance.
+            </li>
+            <li>
+              <strong>Initial Debt Locked:</strong> once multiple transactions exist.
+            </li>
+            <li>
+              <strong>Export Fails:</strong> check browser download permissions.
+            </li>
+            <li>
+              <strong>Data Recovery:</strong> use Recycle Bin; transactions are permanent.
+            </li>
+          </ul>
+        </section>
+
+        <section id="best-practices">
+          <h2>Best Practices</h2>
+          <h3>Recording Transactions</h3>
+          <ul>
+            <li>Record promptly, use clear notes, attach proofs, verify amounts.</li>
+          </ul>
+          <h3>Debtor Management</h3>
+          <ul>
+            <li>Keep contacts updated, clear purposes, consistent naming, review statuses.</li>
+          </ul>
+          <h3>Data Maintenance</h3>
+          <ul>
+            <li>Regular exports; review recovered; clean recycle bin; watch debtor limits.</li>
+          </ul>
+          <h3>Security</h3>
+          <ul>
+            <li>Strong passwords, don’t share credentials, log out, update passwords.</li>
+          </ul>
+        </section>
+
+        <section id="support">
+          <h2>Contact & Support</h2>
+          <p>
+            Review this manual for common solutions. For help, contact your administrator or email <a href="mailto:raidambar12@gmail.com">raidambar12@gmail.com</a>.
+          </p>
+        </section>
+      </article>
+    </div>
+  </div>
+{% endblock %}
+
+{% block extra_js %}
+  <script>
+    // Tiny scrollspy to highlight current section in TOC
+    ;(function () {
+      const links = Array.from(document.querySelectorAll('#toc a'))
+      const map = new Map(links.map((a) => [document.getElementById(a.getAttribute('href').slice(1)), a]))
+    
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            const a = map.get(e.target)
+            if (!a) return
+            if (e.isIntersecting) {
+              links.forEach((x) => x.removeAttribute('aria-current'))
+              a.setAttribute('aria-current', 'true')
+            }
+          })
+        },
+        { rootMargin: '-40% 0px -50% 0px', threshold: 0.1 }
+      )
+    
+      map.forEach((_, sec) => io.observe(sec))
+    })()
+  </script>
+{% endblock %}

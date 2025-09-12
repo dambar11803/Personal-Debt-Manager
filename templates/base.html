@@ -7,7 +7,7 @@
 
     <title>
       {% block title %}
-        admin-base
+        user-base
       {% endblock %}
     </title>
 
@@ -26,7 +26,7 @@
   </head>
   <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-dark">
+    <nav class="navbar navbar-dark me-auto">
       <div class="container-fluid px-3">
         <a class="navbar-brand d-none d-lg-block" href="{% url 'user_dashboard' %}">Personal Debt Manager</a>
 
@@ -98,37 +98,37 @@
           </div>
 
           <!-- Quick Links -->
-          <div class="col-12 col-md-3">
+          <div class="col-6 col-md-3">
             <div class="quick-links-footer">
               <div class="quick-links-title fw-bold mb-3">Quick Links</div>
               <ul class="list-unstyled">
                 <li>
-                  <a href="{% url 'user_dashboard' %}" class="text-light text-decoration-none">Dashboard</a>
+                  <a href="{% url 'user_dashboard' %}" class="text-light">Dashboard</a>
                 </li>
                 <li>
-                  <a href="{% url 'add_debtor' %}" class="text-light text-decoration-none">Add Debtor</a>
+                  <a href="{% url 'add_debtor' %}" class="text-light">Add Debtor</a>
                 </li>
                 <li>
-                  <a href="{% url 'debtor_list' %}" class="text-light text-decoration-none">Debtor List</a>
+                  <a href="{% url 'debtor_list' %}" class="text-light">Debtor List</a>
                 </li>
                 <li>
-                  <a href="{% url 'add_transaction' %}" class="text-light text-decoration-none">Transactions</a>
+                  <a href="{% url 'add_transaction' %}" class="text-light">Transactions</a>
                 </li>
               </ul>
             </div>
           </div>
 
-          <!-- Policy -->
-          <div class="col-12 col-md-3">
+          <!-- Policy Download -->
+          <div class="col-6 col-md-3">
             <div class="download-footer">
               <div class="download-footer-title fw-bold mb-3">Download</div>
               <ul class="list-unstyled">
                 <li>
-                  <a href="{% static 'pdf/debt_user_manual.pdf' %}" target="_blank" class="text-light text-decoration-none">Manual</a>
+                  <a href="{% url 'user_manual' %}" target="_blank" class="text-light">Manual</a>
                 </li>
-                
+
                 <li>
-                  <a href="{% url 'terms_condition' %}" class="text-light text-decoration-none">Terms and Conditions</a>
+                  <a href="{% url 'terms_condition' %}" class="text-light">Terms and Conditions</a>
                 </li>
                 <li>
                   <a href="#" class="text-light text-decoration-none">Feedback</a>
@@ -136,7 +136,6 @@
                 <li>
                   <a href="#" class="text-light text-decoration-none">Policy</a>
                 </li>
-                
               </ul>
             </div>
           </div>
@@ -164,8 +163,8 @@
         <hr class="text-danger" />
 
         <div class="row align-items-center">
-          <div class="col-12 col-md-8">
-            <div class="footer-bottom text-start">
+          <div class="col">
+            <div class="col-12 footer-bottom text-center text-md-start">
               <small>© 2025 Personal Debt Manager | All Rights Reserved | Dambar Chamling.</small>
             </div>
           </div>

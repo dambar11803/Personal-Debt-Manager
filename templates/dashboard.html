@@ -25,7 +25,7 @@
               <div class="icon text-start">
                 <i class="fa-solid fa-people-group text-white"></i>
               </div>
-              <div class="total-debtor-text text-white text-start">Total Debtor</div>
+              <div class="total-debtor-text text-white text-start my-4">Total Debtor</div>
               <div class="debtor-counts text-white text-start">{{ total_debtors_no|default:0 }}</div>
             </div>
           </div>
@@ -34,7 +34,7 @@
               <div class="icon text-start">
                 <i class="fa-solid fa-person text-white text-start"></i>
               </div>
-              <div class="active-debtor-text text-white text-start">Active Debtors</div>
+              <div class="active-debtor-text text-white text-start my-4">Active Debtor</div>
               <div class="active-counts text-white text-start">{{ active_debtors_no|default:0 }}</div>
             </div>
           </div>
@@ -43,16 +43,16 @@
               <div class="icon text-start">
                 <i class="fa-solid fa-person-arrow-up-from-line text-white"></i>
               </div>
-              <div class="recovered-debtor-text text-white text-start">Recovered Debtor</div>
+              <div class="recovered-debtor-text text-white text-start my-4">Recovered Debtor</div>
               <div class="recovered-counts text-white text-start">{{ recovered_debtors_no|default:0 }}</div>
             </div>
           </div>
           <div class="col">
-            <div class="recovery-rate-block deleted-debtors bg-danger">
+            <div class="recovery-rate-block deleted-debtors">
               <div class="icon text-start">
                 <i class="fa-solid fa-user-minus text-white"></i>
               </div>
-              <div class="recovery-debtor-text text-white text-start">Deleted Debtor</div>
+              <div class="recovery-debtor-text text-white text-start my-4">Deleted Debtor</div>
               <div class="recovery-rate text-white text-start">{{ deleted_debtors_no }}</div>
             </div>
           </div>
@@ -67,7 +67,7 @@
               <div class="icon text-start">
                 <i class="fa-solid fa-money-bill-1 text-white"></i>
               </div>
-              <div class="total-debtor-text text-white text-start">Total Debt</div>
+              <div class="total-debtor-text text-white text-start my-3">Total Debt</div>
               <div class="debtor-counts text-white text-start">{{ total_debt_amount|floatformat:2|intcomma }}</div>
             </div>
           </div>
@@ -76,7 +76,7 @@
               <div class="icon text-start">
                 <i class="fa-solid fa-money-bill-trend-up text-white"></i>
               </div>
-              <div class="active-debtor-text text-white text-start">Recovered Debt</div>
+              <div class="active-debtor-text text-white text-start my-3">Recovered Debt</div>
               <div class="active-counts text-white text-start">{{ total_recovered_debt|floatformat:2|intcomma }}</div>
             </div>
           </div>
@@ -85,7 +85,7 @@
               <div class="icon text-start">
                 <i class="fa-solid fa-money-check-dollar text-white"></i>
               </div>
-              <div class="recovered-debtor-text text-white text-start">Remaining Debt</div>
+              <div class="recovered-debtor-text text-white text-start my-3">Remaining Debt</div>
               <div class="recovered-counts text-white text-start">{{ total_current_debt|floatformat:2|intcomma }}</div>
             </div>
           </div>
@@ -183,7 +183,7 @@
           <div class="debtors-list-title pt-5">Debt Amount Details</div>
            <hr color="grey">
           <div class="col debtors-debt-amount py-5">
-            <div class="table-responsive total-debtor-lists py-5">
+            <div class="table-responsive total-debt-amount py-5">
               <table class="table table-bordered border-primary">
                 <thead class="table-primary">
                   <tr>

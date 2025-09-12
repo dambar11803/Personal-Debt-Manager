@@ -87,4 +87,5 @@ urlpatterns = [
     path('export/transactions/', views.export_all_transactions_xlsx, name='export_all_transactions_xlsx'),
     path('export/debtor-transactions/', views.export_debtor_transactions_xlsx, name='export_debtor_transactions_xlsx'),
     path('terms-condition/', views.terms_condition, name='terms_condition'),
+    path('user-manual/', views.user_manual, name='user_manual'),
 ]

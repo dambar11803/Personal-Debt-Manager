@@ -48,65 +48,63 @@
 }
 
 /* animation css on first block  */
-.total-debtor-block{
+.total-debtor-block {
   transition: transform 0.3s ease;
   background-color: #5769f3;
-  
 }
 
-.total-debtor-block:hover{
+.total-debtor-block:hover {
   background-color: #2d44f0;
   animation: rotate-small 0.4s ease forwards;
 }
 
-.active-debtor-block{
+.active-debtor-block {
   transition: transform 0.3s ease;
   background-color: #29901b;
-  
 }
 
-.active-debtor-block:hover{
+.active-debtor-block:hover {
   background-color: #3dd829;
   animation: rotate-small 0.4s ease forwards;
 }
 
-.recovered-debtor-block{
+.recovered-debtor-block {
   transition: transform 0.3s ease;
-   background-color: #767d74;
-  
+  background-color: #767d74;
 }
 
-.recovered-debtor-block:hover{
- 
+.recovered-debtor-block:hover {
   background-color: #9fa49e;
   animation: rotate-small 0.4s ease forwards;
 }
 
-.recovery-rate-block{
+.recovery-rate-block {
   transition: transform 0.3s ease;
-   background-color: #ba3812;
-  
+  background-color: #ba3812;
 }
 
-.recovery-rate-block:hover{
- 
+.recovery-rate-block:hover {
   background-color: #ea592e;
   animation: rotate-small 0.4s ease forwards;
 }
 
-
 @keyframes rotate-small {
-  0%   { transform: rotate(0deg); }
-  50%  { transform: rotate(5deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 /* End of animation css on first block  */
 
-* Icon */
-.icon {
-  font-size: 1.3rem;
-  margin-bottom: 20px;
+* Icon */ .icon {
+  font-size: 1.5rem;
+  /* margin-bottom: 30px; */
 }
 
 /* Stat block text */
@@ -116,7 +114,7 @@
 .recovery-debtor-text {
   font-size: 1rem;
   font-weight: 500;
-  margin-bottom: 20px;
+  /* margin-bottom: 30px; */
 }
 
 .debtor-counts,
@@ -179,27 +177,24 @@
 
 /* ## Background Images for Second Row (active) */
 .total-debts {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/static/images/dashboard/total_debt.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/static/images/dashboard/total_debt.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .recovered-debts {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/static/images/dashboard/debt_recovery.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/static/images/dashboard/debt_recovery.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .remain-debts {
-  background:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("/static/images/dashboard/debt_remain.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('/static/images/dashboard/debt_remain.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -249,7 +244,7 @@ canvas {
   overflow: hidden;
   border: 10px solid #e5e7eb;
   border-radius: 12px;
-  box-shadow: 0 12px 24px rgba(0, 0, 0, .18);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
   box-sizing: border-box;
   background: #fff;
 }
@@ -265,7 +260,7 @@ canvas {
 .no-debtor-image img:hover {
   opacity: 1;
   transform: scale(1.05);
-  transition: transform .25s ease;
+  transition: transform 0.25s ease;
 }
 
 /* =========================================================
@@ -327,6 +322,9 @@ td {
 ========================================================= */
 /* Mobile: show only Sn, Name, Remaining Debt, Status */
 @media (max-width: 576px) {
+  .container {
+    width: 100%;
+  }
   .total-debtor-lists table,
   .debtors-debt-amount table {
     font-size: 0.7rem;
@@ -338,40 +336,49 @@ td {
   }
 
   /* Hide unwanted columns (2,4,5,7,8) */
-  .total-debtor-lists table thead tr th:nth-child(2),
-  .total-debtor-lists table thead tr th:nth-child(4),
-  .total-debtor-lists table thead tr th:nth-child(5),
-  .total-debtor-lists table thead tr th:nth-child(7),
-  .total-debtor-lists table thead tr th:nth-child(8),
-  .total-debtor-lists table tbody tr td:nth-child(2),
-  .total-debtor-lists table tbody tr td:nth-child(4),
-  .total-debtor-lists table tbody tr td:nth-child(5),
-  .total-debtor-lists table tbody tr td:nth-child(7),
-  .total-debtor-lists table tbody tr td:nth-child(8) {
-    display: none !important;
+  .total-debtor-lists table thead th:nth-child(2),  /* Debtor Id */
+  .total-debtor-lists table thead th:nth-child(4),  /* Mobile */
+  .total-debtor-lists table thead th:nth-child(5),  /* Starting Debt */
+  .total-debtor-lists table thead th:nth-child(6),  /* Remaining Debt */
+  .total-debtor-lists table thead th:nth-child(7),  /* Debt Date */
+  .total-debtor-lists table thead th:nth-child(8) {
+    /* Purpose */
+    display: none;
   }
 
-  /* Prevent name overflow (col 3) */
-  .total-debtor-lists table tbody tr td:nth-child(3) {
-    max-width: 220px;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  .total-debtor-lists table tbody td:nth-child(2),  /* Debtor Id */
+  .total-debtor-lists table tbody td:nth-child(4),  /* Mobile */
+  .total-debtor-lists table tbody td:nth-child(5),  /* Starting Debt */
+  .total-debtor-lists table tbody td:nth-child(6),  /* Remaining Debt */
+  .total-debtor-lists table tbody td:nth-child(7),  /* Debt Date */
+  .total-debtor-lists table tbody td:nth-child(8) {
+    /* Purpose */
+    display: none;
+  }
+
+  /* Debtor amount table css  */
+  .total-debt-amount table thead th:nth-child(2),  /* Debtor Id */
+  .total-debt-amount table thead th:nth-child(4),  /* Total Debt */
+  .total-debt-amount table thead th:nth-child(5),  /* Total Recovered */
+  .total-debt-amount table tbody td:nth-child(2),  /* Debtor Id */
+  .total-debt-amount table tbody td:nth-child(4),  /* Total Debt */
+  .total-debt-amount table tbody td:nth-child(5) { /* Total Recovered */
+    display: none;
+  }
+
+  /* Replace "Remaining Debt" → "Current Debt" */
+  .total-debt-amount table thead th:nth-child(6) {
+    position: relative;
+    color: transparent;   /* hide original text */
+  }
+
+  .total-debt-amount table thead th:nth-child(6)::after {
+    content: "Current Debt";  /* new label */
+    color: #000;
+    position: absolute;
+    /* top: 0; */
+    left: 10px; 
     white-space: nowrap;
-  }
-
-  /* Align Remaining Debt (col 6) */
-  .total-debtor-lists table thead tr th:nth-child(6),
-  .total-debtor-lists table tbody tr td:nth-child(6) {
-    text-align: right;
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-
-  /* Center Status (col 9) */
-  .total-debtor-lists table thead tr th:nth-child(9),
-  .total-debtor-lists table tbody tr td:nth-child(9) {
-    text-align: center;
-    font-weight: 600;
   }
 }
 
@@ -396,8 +403,14 @@ td {
    Animations
 ========================================================= */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .total-debtor-block,
@@ -407,7 +420,15 @@ td {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-.total-debtor-block { animation-delay: 0.1s; }
-.active-debtor-block { animation-delay: 0.2s; }
-.recovered-debtor-block { animation-delay: 0.3s; }
-.recovery-rate-block { animation-delay: 0.4s; }
+.total-debtor-block {
+  animation-delay: 0.1s;
+}
+.active-debtor-block {
+  animation-delay: 0.2s;
+}
+.recovered-debtor-block {
+  animation-delay: 0.3s;
+}
+.recovery-rate-block {
+  animation-delay: 0.4s;
+}
